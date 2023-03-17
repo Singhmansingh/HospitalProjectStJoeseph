@@ -269,13 +269,18 @@
     <Content Include="Views\Patient\New.cshtml" />
     <Content Include="Views\Patient\Update.cshtml" />
     <Content Include="Views\Patient\Delete.cshtml" />
+    <Content Include="Views\Clinic\List.cshtml" />
+    <Content Include="Views\Clinic\Delete.cshtml" />
+    <Content Include="Views\Clinic\New.cshtml" />
+    <Content Include="Views\Clinic\Update.cshtml" />
+    <Content Include="Views\Service\List.cshtml" />
+    <Content Include="Views\Service\New.cshtml" />
+    <Content Include="Views\Service\Update.cshtml" />
+    <Content Include="Views\Service\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\ClinicViewModel\" />
-    <Folder Include="Views\Clinic\" />
     <Folder Include="Views\ServiceViewModel\" />
-    <Folder Include="Views\Service\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
