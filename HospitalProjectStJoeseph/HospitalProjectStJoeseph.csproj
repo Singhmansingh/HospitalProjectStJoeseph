@@ -182,6 +182,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentsController.cs" />
+    <Compile Include="Controllers\AppointmentsDataController.cs" />
     <Compile Include="Controllers\BestWishesController.cs" />
     <Compile Include="Controllers\BestWishesDataController.cs" />
     <Compile Include="Controllers\ClinicController.cs" />
@@ -190,6 +192,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
+    <Compile Include="Controllers\PhysiciansController.cs" />
+    <Compile Include="Controllers\PhysiciansDataController.cs" />
     <Compile Include="Controllers\RequisitionController.cs" />
     <Compile Include="Controllers\RequisitionDataController.cs" />
     <Compile Include="Controllers\ServiceController.cs" />
@@ -291,6 +295,14 @@
     <Content Include="Views\Test\List.cshtml" />
     <Content Include="Views\Test\Delete.cshtml" />
     <Content Include="Views\Test\Update.cshtml" />
+    <Content Include="Views\Physicians\New.cshtml" />
+    <Content Include="Views\Physicians\List.cshtml" />
+    <Content Include="Views\Physicians\Update.cshtml" />
+    <Content Include="Views\Physicians\Delete.cshtml" />
+    <Content Include="Views\Appointments\New.cshtml" />
+    <Content Include="Views\Appointments\List.cshtml" />
+    <Content Include="Views\Appointments\Update.cshtml" />
+    <Content Include="Views\Appointments\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
