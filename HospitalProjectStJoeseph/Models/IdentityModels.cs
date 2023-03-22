@@ -25,6 +25,8 @@ namespace HospitalProjectStJoeseph.Models
         {
         }
 
+            public DbSet<Clinic> Clinics { get; set; }
+            public DbSet<Service> Services { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
