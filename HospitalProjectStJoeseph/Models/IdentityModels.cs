@@ -25,6 +25,12 @@ namespace HospitalProjectStJoeseph.Models
         {
         }
 
+        // new entity to the system
+        public DbSet<Requisition> Requisitions { get; set; }
+
+        public DbSet<Test> Tests { get; set; }
+
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
