@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace MyApp.Models
+namespace HospitalProjectStJoeseph.Models
 {
     public class Physician
     {
