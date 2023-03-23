@@ -7,7 +7,7 @@
     {
         public override void Up()
         {
-            CreateTable(
+           /* CreateTable(
                 "dbo.Clinics",
                 c => new
                     {
@@ -16,7 +16,7 @@
                         ClinicDescription = c.String(),
                         ClinicTime = c.Time(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.ClinicId);
+                .PrimaryKey(t => t.ClinicId);*/
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -105,7 +105,7 @@
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Clinics");
+            /*DropTable("dbo.Clinics");*/
         }
     }
 }

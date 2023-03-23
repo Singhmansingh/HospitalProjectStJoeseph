@@ -219,6 +219,10 @@
     <Compile Include="Migrations\202303231758529_Patient-BestWishes.designer.cs">
       <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303231828399_test.cs" />
+    <Compile Include="Migrations\202303231828399_test.designer.cs">
+      <DependentUpon>202303231828399_test.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BestWish.cs" />
@@ -350,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303231758529_Patient-BestWishes.resx">
       <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303231828399_test.resx">
+      <DependentUpon>202303231828399_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

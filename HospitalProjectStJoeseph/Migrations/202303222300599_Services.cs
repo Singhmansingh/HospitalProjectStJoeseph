@@ -7,7 +7,7 @@
     {
         public override void Up()
         {
-            CreateTable(
+           /* CreateTable(
                 "dbo.Services",
                 c => new
                     {
@@ -15,13 +15,13 @@
                         ServiceName = c.String(),
                         ServiceTime = c.Time(nullable: false, precision: 7),
                     })
-                .PrimaryKey(t => t.ServiceId);
+                .PrimaryKey(t => t.ServiceId); */
             
         }
         
         public override void Down()
         {
-            DropTable("dbo.Services");
+           // DropTable("dbo.Services");
         }
     }
 }
