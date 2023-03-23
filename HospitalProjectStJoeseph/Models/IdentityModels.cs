@@ -34,6 +34,7 @@ namespace HospitalProjectStJoeseph.Models
             public DbSet<Service> Services { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Physician> Physician { get; set; }
+        public DbSet<Physician> Appointments { get; set; }
         public DbSet<BestWish> BestWishes { get; set; }
         public static ApplicationDbContext Create()
         {
