@@ -203,6 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303230427537_ReqTest.cs" />
+    <Compile Include="Migrations\202303230427537_ReqTest.designer.cs">
+      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
     <Compile Include="Migrations\202303222255353_Clinics.cs" />
     <Compile Include="Migrations\202303222255353_Clinics.designer.cs">
       <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
@@ -331,6 +334,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303230427537_ReqTest.resx">
+      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
     <EmbeddedResource Include="Migrations\202303222255353_Clinics.resx">
       <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
     </EmbeddedResource>
