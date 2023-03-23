@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -30,6 +30,8 @@ namespace HospitalProjectStJoeseph.Models
 
         public DbSet<Test> Tests { get; set; }
 
+            public DbSet<Clinic> Clinics { get; set; }
+            public DbSet<Service> Services { get; set; }
 
         public static ApplicationDbContext Create()
         {
