@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using MyApp.Models;
 
 namespace HospitalProjectStJoeseph.Models
 {
@@ -34,7 +35,7 @@ namespace HospitalProjectStJoeseph.Models
             public DbSet<Service> Services { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Physician> Physician { get; set; }
-        public DbSet<Physician> Appointments { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
         public DbSet<BestWish> BestWishes { get; set; }
         public static ApplicationDbContext Create()
         {
