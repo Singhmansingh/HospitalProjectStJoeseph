@@ -13,6 +13,18 @@ namespace HospitalProjectStJoeseph.Models
 
         public string ServiceName { get; set; }
 
-        public TimeSpan ServiceTime { get; set; }   
+        public DateTime ServiceTime { get; set; } 
+        
+        public ICollection<Clinic> Clinic { get; set; }
     }
+
+    public class ServiceDto
+    {
+        public int ServiceId { get; set; }
+
+        public string ServiceName { get; set; }
+
+        public DateTime ServiceTime { get; set; }
+    }
+
 }

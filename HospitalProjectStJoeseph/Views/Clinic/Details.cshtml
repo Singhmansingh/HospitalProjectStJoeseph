@@ -1,0 +1,36 @@
+﻿@model HospitalProjectStJoeseph.Models.ViewModels.DetailsClinic
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Clinic/List">Go back to list</a>
+<br />
+<a href="/Clinic/Edit/@Model.SelectedClinic.ClinicId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Clinic/DeleteConfirm/@Model.SelectedClinic.ClinicId">Delete</a>
+<h2>@Model.SelectedClinic.ClinicName</h2>
+<div>Descripton: @Model.SelectedClinic.ClinicDescription</div>
+<div>Time: @Model.SelectedClinic.ClinicTime</div>
+
+<div>
+    <h2>Servic Provided for @Model.SelectedClinic.ClinicName:</h2>
+    @foreach (var service in Model.ProvidedServices)
+    {
+
+        <a href="/Service/Details/@service.ServiceId">@service.ServiceName</a> <a style="color:#ab2020;" href="/Clinic/Unassociate/@Model.SelectedClinic.ServiceId?ServiceId=@service.ServiceId">[x]</a><br />
+    }
+
+    <div>
+        <h4>Add new Service that this clinic provides @Model.SelectedClinic.ClinicName</h4>
+        <form method="POST" action="/Service/Associate/@Model.SelectedClinic.ClinicId">
+            <select name="ServiceId">
+                @foreach (var service in Model.ProvidedServices)
+                {
+                    <option value="@service.ServiceId">@service.ServiceTime</option>
+                }
+
+            </select>
+            <input type="submit" value="Associate Service" />
+        </form>
+    </div>
+</div>

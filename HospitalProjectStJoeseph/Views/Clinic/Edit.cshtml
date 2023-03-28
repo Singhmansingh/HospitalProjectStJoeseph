@@ -1,0 +1,26 @@
+﻿@model HospitalProjectStJoeseph.Models.ViewModels.UpdateClinic
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Clinic</h2>
+<form action="/Clinic/Update/@Model.SelectedClinic.ClinicId" method="POST">
+    <div style="display:none;">
+        @* Pass through the clinic ID *@
+        <input type="text" name="ClinicId" value="@Model.SelectedClinic.ClinicId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="ClinicName" value="@Model.SelectedClinic.ClinicName" />
+    </div>
+    <div>
+        <label>Description:</label> <input type="text" name="ClinicDescription" value="@Model.SelectedClinic.ClinicDescription" />
+    </div>
+    <div>
+        <label>Time:</label> <input type="datetime" name="ClinicDate" value="@Model.SelectedClinic.ClinicTime" />
+    </div>
+    <div>
+        <input type="submit" value="Update Clinic" />
+
+    </div>
+</form>

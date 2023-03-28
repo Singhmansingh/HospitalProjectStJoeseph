@@ -1,0 +1,24 @@
+﻿@model HospitalProjectStJoeseph.Models.ServiceDto
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Update Service</h2>
+<form action="/Service/Update/@Model.ServiceId" method="POST">
+    <div style="display:none;">
+        @* Pass through the Keeper ID *@
+        <input type="text" name="ServiceId" value="@Model.ServiceId" />
+    </div>
+    <div>
+        <label>Name:</label> <input type="text" name="ServiceName" value="@Model.ServiceName" />
+    </div>
+    <div>
+        <label>Time:</label> <input type="datetime" name="ServiceTime" value="@Model.ServiceTime" />
+    </div>
+
+    <div>
+        <input type="submit" value="Update Service" />
+
+    </div>
+</form>
