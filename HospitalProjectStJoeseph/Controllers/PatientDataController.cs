@@ -17,6 +17,7 @@ namespace HospitalProjectStJoeseph.Controllers
         //TODO: List Patients
         [HttpGet]
         [ResponseType(typeof(List<Patient>))]
+        [Route("api/PatientData/List")]
         public IHttpActionResult List()
         {
             List<Patient> Patients = db.Patients.ToList();
@@ -24,9 +25,20 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(Patients);
         }
 
+        [HttpGet]
+        [ResponseType(typeof(Patient))]
+        [Route("api/PatientData/Find/{PatientId}")]
+        public IHttpActionResult Find(int PatientId)
+        {
+            Patient Patient = db.Patients.Find(PatientId);
+            if(Patient == null) return NotFound();
+            return Ok(Patient);
+        }
+
         //TODO: Add Patient
         [HttpPost]
-        [Authorize]
+        // [Authorize]
+        [Route("api/PatientData/Add")]
 
         public IHttpActionResult Add([FromBody] Patient Patient)
         {
@@ -43,7 +55,8 @@ namespace HospitalProjectStJoeseph.Controllers
 
         //TODO: Update Patient
         [HttpPost]
-        [Authorize]
+        // [Authorize]
+        [Route("api/PatientData/UpdatePatient/{id}")]
 
         public IHttpActionResult UpdatePatient(int id, [FromBody] Patient Patient)
         {
@@ -71,7 +84,8 @@ namespace HospitalProjectStJoeseph.Controllers
         //TODO: Delete Patient
         [HttpPost]
         [ResponseType(typeof(Patient))]
-        [Authorize]
+        // [Authorize]
+        [Route("api/PatientData/DeletePatient/{id}")]
 
         public IHttpActionResult DeletePatient(int id)
         {
@@ -81,7 +95,31 @@ namespace HospitalProjectStJoeseph.Controllers
                 return NotFound();
             }
             db.Patients.Remove(Patient);
+            db.SaveChanges();
             return Ok();
+        }
+
+        //TOD: List Best Wishes for Patient
+        [HttpGet]
+        [ResponseType(typeof(PatientDto))]
+        [Route("api/PatientData/FindPatientWithBestWishes/{PatientId}")]
+
+        public IHttpActionResult FindPatientWithBestWishes(int PatientId)
+        {
+            Patient Patient = db.Patients.Find(PatientId);
+            if (Patient == null) return NotFound();
+
+            List<BestWish> bestWishes = db.BestWishes.Where(bw => bw.PatientId == PatientId).ToList();
+
+            PatientDto dto = new PatientDto();
+            dto.Patient = Patient;
+
+            if (bestWishes.Count > 0)
+            {
+                dto.BestWishes = bestWishes;
+            }
+            return Ok(dto);
+
         }
 
 

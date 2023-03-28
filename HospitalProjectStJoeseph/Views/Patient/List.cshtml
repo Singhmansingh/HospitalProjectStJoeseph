@@ -1,7 +1,17 @@
-﻿
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.Patient>
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
+<div>
+    <a href="/Patient/New" class="btn btn-success">Add Patient</a>
+</div>
+
+@foreach(var patient in Model)
+            {
+                <div>
+                    <h3><a href="/Patient/Show/@patient.PatientId">@patient.PatientName</a></h3>
+                </div>
+            }
 

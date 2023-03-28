@@ -15,4 +15,11 @@ namespace HospitalProjectStJoeseph.Models
         public string PatientPhysicalAddress { get; set; }
         public string PatientEmailAddress { get; set; }
     }
+
+    public class PatientDto
+    {
+        public Patient Patient { get; set; }
+        public List<BestWish> BestWishes { get; set; }
+
+    }
 }
