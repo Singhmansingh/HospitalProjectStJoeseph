@@ -1,0 +1,24 @@
+﻿@model HospitalProjectStJoeseph.Models.PatientDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+    ViewBag.Layout = null;
+}
+
+<h3>Confirm Deletion of @Model.Patient.PatientName</h3>
+@{ 
+    int BestWishesCount = 0;
+    if (Model.BestWishes != null)
+    {
+        BestWishesCount = Model.BestWishes.Count;
+    }
+}
+<p>Are you sure you want to delete @Model.Patient.PatientName? This will also remove all (@BestWishesCount) messages.</p>
+<form  method="post" action="/Patient/Delete/@Model.Patient.PatientId">
+    <button type="button" onclick="cancel()" class="btn btn-primary">Cancel</button>
+    <button type="submit"  class="btn btn-danger">Delete</button>
+</form>
+
+
+
+
+

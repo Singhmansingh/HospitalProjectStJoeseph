@@ -227,14 +227,6 @@
     <Compile Include="Migrations\202303231852492_physicians.designer.cs">
       <DependentUpon>202303231852492_physicians.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303270202516_clinicxservice.cs" />
-    <Compile Include="Migrations\202303270202516_clinicxservice.designer.cs">
-      <DependentUpon>202303270202516_clinicxservice.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303270216242_dateTime.cs" />
-    <Compile Include="Migrations\202303270216242_dateTime.designer.cs">
-      <DependentUpon>202303270216242_dateTime.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BestWish.cs" />
@@ -341,10 +333,6 @@
     <Content Include="Views\Appointments\List.cshtml" />
     <Content Include="Views\Appointments\Update.cshtml" />
     <Content Include="Views\Appointments\Delete.cshtml" />
-    <Content Include="Views\Clinic\Details.cshtml" />
-    <Content Include="Views\Clinic\Edit.cshtml" />
-    <Content Include="Views\Service\Error.cshtml" />
-    <Content Include="Views\Service\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -381,12 +369,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303231852492_physicians.resx">
       <DependentUpon>202303231852492_physicians.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303270202516_clinicxservice.resx">
-      <DependentUpon>202303270202516_clinicxservice.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303270216242_dateTime.resx">
-      <DependentUpon>202303270216242_dateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,32 +18,36 @@ namespace HospitalProjectStJoeseph.Controllers
         //TODO: List Best Wishes
         [HttpGet]
         [ResponseType(typeof(List<BestWish>))]
-        public IHttpActionResult List()
+        [Route("api/BestWishesData/ListAllBestWishes")]
+        public IHttpActionResult ListAllBestWishes()
         {
             List<BestWish> bestWishes = db.BestWishes.ToList();
 
             return Ok(bestWishes);
         }
 
-        //TOD: List Best Wishes for Patient
+        //TODO: Find Best Wish by ID
         [HttpGet]
-        [ResponseType(typeof(List<BestWish>))]
-        public IHttpActionResult ListFor(int PatientId)
+        [ResponseType(typeof(BestWish))]
+        [Route("api/BestWishesData/FindBestWish/{BestWishId}")]
+        public IHttpActionResult FindBestWish(int BestWishId)
         {
-            List<BestWish> bestWishes = db.BestWishes.Where(bw => bw.PatientId == PatientId).ToList();
-
-            if(bestWishes.Count > 0)
+            BestWish bestWish = db.BestWishes.Find(BestWishId);
+            if(bestWish != null)
             {
-                return Ok(bestWishes);
+                return Ok(bestWish);
             }
-            return BadRequest();
 
+            return BadRequest();
         }
+
+
         //TODO: Add Best Wish
         [HttpPost]
-        [Authorize]
+       // [Authorize]
+        [Route("api/BestWishesData/AddBestWish")]
 
-        public IHttpActionResult Add([FromBody] BestWish BestWish)
+        public IHttpActionResult AddBestWish([FromBody] BestWish BestWish)
         {
             var res = db.BestWishes.Add(BestWish);
             db.SaveChanges();
@@ -58,7 +62,8 @@ namespace HospitalProjectStJoeseph.Controllers
 
         //TODO: Update Best Wish
         [HttpPost]
-        [Authorize]
+        // [Authorize]
+        [Route("api/BestWishesData/UpdateBestWish/{id}")]
 
         public IHttpActionResult UpdateBestWish(int id, [FromBody] BestWish BestWish)
         {
@@ -85,7 +90,8 @@ namespace HospitalProjectStJoeseph.Controllers
         //TODO: Delete Best Wish
         [HttpPost]
         [ResponseType(typeof(BestWish))]
-        [Authorize]
+        // [Authorize]
+        [Route("api/BestWishesData/DeleteBestWish/{id}")]
 
         public IHttpActionResult DeleteBestWish(int id)
         {
@@ -95,6 +101,8 @@ namespace HospitalProjectStJoeseph.Controllers
                 return NotFound();
             }
             db.BestWishes.Remove(bestWish);
+            db.SaveChanges();
+
             return Ok();
         }
 

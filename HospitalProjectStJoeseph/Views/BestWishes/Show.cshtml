@@ -1,0 +1,15 @@
+﻿@model HospitalProjectStJoeseph.Models.BestWish
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>New Best Wish!</h2>
+<p>@Model.BestWishSendDate</p>
+<h3>From @Model.BestWishSender</h3>
+<p>Message: @Model.BestWishMessage</p>
+
+<div>
+    <h4>Reply to Sender:</h4>
+    <p>Email: @Model.BestWishSenderEmail</p>
+    <p>Phone #: @Model.BestWishSenderPhone</p>
+</div>

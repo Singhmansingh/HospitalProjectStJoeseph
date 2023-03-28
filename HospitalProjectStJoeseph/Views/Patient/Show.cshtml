@@ -1,0 +1,79 @@
+﻿@model HospitalProjectStJoeseph.Models.PatientDto
+@{
+    ViewBag.Title = "Show";
+}
+
+<h2>@Model.Patient.PatientName</h2>
+<div class="">
+    <a href="/Patient/Update/@Model.Patient.PatientId" class="btn btn-primary btn-sm">Edit</a>
+    <button class="btn btn-danger btn-sm" onclick="confirmDeletion()">Delete</button>
+</div>
+<div id="DeleteConfirmBox" class="hide"></div>
+<div>
+    <p>@Model.Patient.PatientPhysicalAddress</p>
+    <p>@Model.Patient.PatientPhoneNumber</p>
+    <p>@Model.Patient.PatientEmailAddress</p>
+</div>
+
+<h3>Best Wishes Inbox</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Date</th>
+            <th>Sender</th>
+            <th>From</th>
+            <th colspan="3">Message</th>
+            <td></td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.BestWishes != null && Model.BestWishes.Count > 0)
+        {
+            foreach (var bw in Model.BestWishes)
+            {
+                <tr>
+                    <td><a href="/BestWishes/Show/@bw.BestWishId" class="btn btn-primary">Reply</a></td>
+                    <td>@bw.BestWishSendDate.ToShortDateString()</td>
+                    <td>@bw.BestWishSender</td>
+                    <td>@bw.BestWishSenderEmail</td>
+                    <td>@bw.BestWishMessage</td>
+                </tr>
+            }
+        }
+        else
+            {
+                <tr>
+                    <td colspan="7" align="center">No new best wishes</td>
+                </tr>
+            }
+
+    </tbody>
+</table>
+
+<script>
+    function gid(id) {
+        return document.getElementById(id);
+    }
+    function confirmDeletion() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/Patient/DeleteConfirm/@Model.Patient.PatientId", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4)
+                if (xhr.status === 200)
+                    loadConfirmBox(xhr.response)
+        }
+        xhr.send(null);
+    }
+
+    function loadConfirmBox(content) {
+        gid("DeleteConfirmBox").innerHTML = content;
+        gid("DeleteConfirmBox").classList.remove("hide");
+    }
+
+    function cancel() {
+        gid("DeleteConfirmBox").classList.add("hide");
+    }
+
+</script>

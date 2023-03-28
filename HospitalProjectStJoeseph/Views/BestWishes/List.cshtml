@@ -1,7 +1,17 @@
-﻿
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.BestWish>
 @{
     ViewBag.Title = "List";
 }
 
 <h2>List</h2>
+
+@foreach(var bw in Model)
+            {
+                <div>
+                    <h2><a href="/BestWishes/Show/@bw.BestWishId">@bw.BestWishSender</a></h2>
+                    <p>@bw.BestWishSendDate</p>
+                    <p>To <a href="/Patient/Show/@bw.Patient.PatientId">@bw.Patient.PatientName</a></p>
+                    <p>@bw.BestWishMessage</p>
+                </div>
+            }
 
