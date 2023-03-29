@@ -1,7 +1,39 @@
-﻿
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.Patient>
 @{
     ViewBag.Title = "New";
 }
 
-<h2>New</h2>
+<h2>New Best Wish Message</h2>
+
+
+<form method="post" action="/BestWishes/Add">
+    <div class="form-group">
+        <label for="senderName">To:</label>
+        <select name="PatientId" class="form-control">
+            @foreach (var patient in Model)
+            {
+                <option value="@patient.PatientId">@patient.PatientName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="senderName">Your Name:</label>
+        <input class="form-control" type="text" id="senderName" name="BestWishSender" />
+    </div>
+    <div class="form-group">
+        <label for="senderEmail">Your Email:</label>
+        <input class="form-control" type="text" id="senderEmail" name="BestWishSenderEmail" />
+    </div>
+    <div class="form-group">
+        <label for="senderNumber">Your Phone Number:</label>
+        <input class="form-control" type="text" id="senderNumber" name="BestWishSenderPhone" />
+    </div>
+
+    <div class="form-group">
+        <label for="senderName">Message:</label>
+        <textarea class="form-control" rows="10" cols="10" id="BestWishMessage" name="BestWishMessage"></textarea>
+    </div>
+    <a class="btn btn-default" href="/BestWishes/List">Cancel</a>
+    <input class="btn btn-primary" type="submit" value="Send" />
+</form>
 

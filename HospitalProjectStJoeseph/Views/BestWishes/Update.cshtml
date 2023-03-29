@@ -1,7 +1,41 @@
-﻿
+﻿@model HospitalProjectStJoeseph.Models.BestWish
 @{
     ViewBag.Title = "Update";
 }
 
-<h2>Update</h2>
+<h2>Update Message</h2>
 
+<form method="post" action="/BestWishes/Save/@Model.BestWishId">
+    <div class="form-group">
+        <label for="senderName">To:</label>
+        <select name="PatientId" class="form-control">
+            @foreach (var patient in ViewBag.Patients)
+            {
+                <option value="@patient.PatientId" 
+
+                    @(patient.PatientId == Model.PatientId) selected : null;
+                        
+                >@patient.PatientName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="senderName">Your Name:</label>
+        <input class="form-control" type="text" id="senderName" name="BestWishSender" value="@Model.BestWishSender" />
+    </div>
+    <div class="form-group">
+        <label for="senderEmail">Your Email:</label>
+        <input class="form-control" type="text" id="senderEmail" name="BestWishSenderEmail" value="@Model.BestWishSenderEmail" />
+    </div>
+    <div class="form-group">
+        <label for="senderNumber">Your Phone Number:</label>
+        <input class="form-control" type="text" id="senderNumber" name="BestWishSenderPhone" value="@Model.BestWishSenderPhone" />
+    </div>
+
+    <div class="form-group">
+        <label for="senderName">Message:</label>
+        <textarea class="form-control" rows="10" cols="10" id="BestWishMessage" name="BestWishMessage">@Model.BestWishMessage</textarea>
+    </div>
+    <a class="btn btn-default" href="/BestWishes/Show/@Model.BestWishId">Cancel</a>
+    <input class="btn btn-primary" type="submit" value="Save" />
+</form>
