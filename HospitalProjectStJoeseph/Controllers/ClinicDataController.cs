@@ -1,17 +1,13 @@
 ﻿using HospitalProjectStJoeseph.Models;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Migrations;
-using System.Diagnostics;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-
 
 namespace HospitalProjectStJoeseph.Controllers
 {
@@ -19,77 +15,39 @@ namespace HospitalProjectStJoeseph.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        // GET: api/ClinicData/ListClinics
         [HttpGet]
-        [ResponseType(typeof(ClinicDto))]
-        public IHttpActionResult ListClinic()
+        public IEnumerable<ClinicDto> ListClinics()
         {
-            List<Clinic> Clinics = db.Clinics.ToList();
-            List<ClinicDto> clinicDtos = new List<ClinicDto>();
+            List<Clinic> clinics =  db.Clinics.ToList();
+            List <ClinicDto> clinicDtos = new List<ClinicDto>();
 
-            Clinics.ForEach(c => clinicDtos.Add(new ClinicDto()
-            {
+            clinics.ForEach(c => clinicDtos.Add(new ClinicDto(){
                 ClinicId = c.ClinicId,
                 ClinicName = c.ClinicName,
                 ClinicDescription = c.ClinicDescription,
                 ClinicTime = c.ClinicTime
             }));
 
-            return Ok(clinicDtos);
+            return clinicDtos;
+
         }
 
-        [HttpPost]
-        [Route("api/ClinicData/AssociateClinicWithService/{clinicid}/{serviceid}")]
-        public IHttpActionResult AssociateClinicWithService(int clinicid, int serviceid)
-        {
-
-            Clinic SelectedClinic = db.Clinics.Include(a => a.Services).Where(a => a.ClinicId == clinicid).FirstOrDefault();
-            Service SelectedService = db.Services.Find(serviceid);
-
-            if (SelectedClinic == null || SelectedService == null)
-            {
-                return NotFound();
-            }
-
-            SelectedClinic.Services.Add(SelectedService); 
-            db.SaveChanges();
-
-            return Ok();
-        }
-
-
-        [HttpPost]
-        [Route("api/ClinicData/UnAssociateClinicWithService/{clinicid}/{serviceid}")]
-        public IHttpActionResult UnAssociateClinicWithService(int clinicid, int serviceid)
-        {
-
-            Clinic SelectedClinic = db.Clinics.Include(a => a.Services).Where(a => a.ClinicId == clinicid).FirstOrDefault();
-            Service SelectedService = db.Services.Find(serviceid);
-
-            if (SelectedClinic == null || SelectedService == null)
-            {
-                return NotFound();
-            }
-
-            SelectedClinic.Services.Remove(SelectedService);
-            db.SaveChanges();
-
-            return Ok();
-        }
-
+        // GET: api/ClinicData/FindClinic/5
         [ResponseType(typeof(ClinicDto))]
         [HttpGet]
         public IHttpActionResult FindClinic(int id)
         {
-            Clinic Clinic = db.Clinics.Find(id);
+
+            Clinic clinic = db.Clinics.Find(id);
             ClinicDto clinicDto = new ClinicDto()
             {
-                ClinicId = Clinic.ClinicId,
-                ClinicName = Clinic.ClinicName,
-                ClinicDescription = Clinic.ClinicDescription,
-                ClinicTime = Clinic.ClinicTime
-               
+                ClinicId = clinic.ClinicId,
+                ClinicName = clinic.ClinicName,
+                ClinicDescription = clinic.ClinicDescription,
+                ClinicTime = clinic.ClinicTime
             };
-            if (Clinic == null)
+            if (clinic == null)
             {
                 return NotFound();
             }
@@ -97,6 +55,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(clinicDto);
         }
 
+        // POST: api/ClinicData/updateClinic/5
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateClinic(int id, Clinic clinic)
@@ -108,7 +67,6 @@ namespace HospitalProjectStJoeseph.Controllers
 
             if (id != clinic.ClinicId)
             {
-
                 return BadRequest();
             }
 
@@ -129,9 +87,11 @@ namespace HospitalProjectStJoeseph.Controllers
                     throw;
                 }
             }
+
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // POST: api/ClinicData/AddClinic
         [ResponseType(typeof(Clinic))]
         [HttpPost]
         public IHttpActionResult AddClinic(Clinic clinic)
@@ -147,6 +107,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return CreatedAtRoute("DefaultApi", new { id = clinic.ClinicId }, clinic);
         }
 
+        // POST: api/ClinicData/DeleteClinic/5
         [ResponseType(typeof(Clinic))]
         [HttpPost]
         public IHttpActionResult DeleteClinic(int id)
@@ -170,13 +131,11 @@ namespace HospitalProjectStJoeseph.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }   
+        }
 
         private bool ClinicExists(int id)
         {
             return db.Clinics.Count(e => e.ClinicId == id) > 0;
         }
-
-
     }
 }

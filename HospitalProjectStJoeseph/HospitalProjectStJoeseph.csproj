@@ -333,6 +333,8 @@
     <Content Include="Views\Appointments\List.cshtml" />
     <Content Include="Views\Appointments\Update.cshtml" />
     <Content Include="Views\Appointments\Delete.cshtml" />
+    <Content Include="Views\Clinic\Details.cshtml" />
+    <Content Include="Views\Clinic\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

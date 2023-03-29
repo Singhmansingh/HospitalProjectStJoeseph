@@ -1,23 +1,23 @@
-﻿@model HospitalProjectStJoeseph.Models.ViewModels.UpdateClinic
+﻿@model HospitalProjectStJoeseph.Models.ClinicDto
 
 @{
     ViewBag.Title = "Edit";
 }
 
 <h2>Update Clinic</h2>
-<form action="/Clinic/Update/@Model.SelectedClinic.ClinicId" method="POST">
+<form action="/Clinic/Update/@Model.ClinicId" method="POST">
     <div style="display:none;">
         @* Pass through the clinic ID *@
-        <input type="text" name="ClinicId" value="@Model.SelectedClinic.ClinicId" />
+        <input type="text" name="ClinicId" value="@Model.ClinicId" />
     </div>
     <div>
-        <label>Name:</label> <input type="text" name="ClinicName" value="@Model.SelectedClinic.ClinicName" />
+        <label>Name:</label> <input type="text" name="ClinicName" value="@Model.ClinicName" />
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="ClinicDescription" value="@Model.SelectedClinic.ClinicDescription" />
+        <label>Time:</label> <input type="datetime" name="ClinicTime" value="@Model.ClinicTime" />
     </div>
     <div>
-        <label>Time:</label> <input type="datetime" name="ClinicDate" value="@Model.SelectedClinic.ClinicTime" />
+        <label>Decription:</label> <input type="text" name="ClinicDescription" value="@Model.ClinicDescription" />
     </div>
     <div>
         <input type="submit" value="Update Clinic" />

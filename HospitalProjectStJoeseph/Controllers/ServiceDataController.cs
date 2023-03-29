@@ -15,6 +15,7 @@ namespace HospitalProjectStJoeseph.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        //GET: api/servicedata/listservices
         [HttpGet]
         [ResponseType(typeof(ServiceDto))]
         public IHttpActionResult ListServices()
@@ -32,6 +33,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(serviceDtos);
         }
 
+        //GET: api/ServiceData/
         [HttpGet]
         [ResponseType(typeof(ServiceDto))]
         public IHttpActionResult ListServiceforClinic(int id)
@@ -52,6 +54,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(serviceDtos);
         }
 
+        //GET: api/ServiceData/
         [HttpGet]
         [ResponseType(typeof(ServiceDto))]
         public IHttpActionResult ListServicesNotProvidedForClinic(int id)
@@ -72,6 +75,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(serviceDtos);
         }
 
+        //GET: api/ServiceData/FindService/5
         [ResponseType(typeof(ServiceDto))]
         [HttpGet]
         public IHttpActionResult FindService(int id)
@@ -91,7 +95,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(serviceDtos);
         }
 
-
+        //POST: api/ServiceData/UpdateService/5
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateService(int id, Service service)
@@ -127,7 +131,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-
+        //POST: api/ServiceData/AddService
         [ResponseType(typeof(Service))]
         [HttpPost]
         public IHttpActionResult AddService(Service service)
@@ -143,7 +147,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return CreatedAtRoute("DefaultApi", new { id = service.ServiceId }, service);
         }
 
-
+        //POST: api/ServiceData/DeleteService/5
         [ResponseType(typeof(Service))]
         [HttpPost]
         public IHttpActionResult DeleteService(int id)

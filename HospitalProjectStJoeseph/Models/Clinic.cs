@@ -11,7 +11,6 @@ namespace HospitalProjectStJoeseph.Models
     public class Clinic
     {
         [Key]
-
         public int ClinicId { get; set; }
 
         public string ClinicName { get; set; }
@@ -31,7 +30,5 @@ namespace HospitalProjectStJoeseph.Models
         public string ClinicDescription { get; set; }
         public DateTime ClinicTime { get; set; }
 
-        public int ServiceId { get; set; } 
-        public string ServiceName { get; set; }
     }
 }

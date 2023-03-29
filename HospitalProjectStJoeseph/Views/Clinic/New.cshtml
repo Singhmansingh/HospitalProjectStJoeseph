@@ -1,18 +1,19 @@
-﻿@model IEnumerable<HospitalProjectStJoeseph.Models.Clinic>
-
-@{
+﻿
+@{ 
     ViewBag.Title = "Create";
 }
-
 <h2>Create Clinic</h2>
-<form action="/Clinic/Create" method="POST">
+<form action="/Clinic/Create" method="post">
     <div>
-        <label>Name:</label> <input type="text" name="ClinicName" />
+        <label>Name:</label><input name="ClinicName"/>
     </div>
     <div>
-        <label>Description:</label> <input type="text" name="ClinicDescription" />
-        <label>Time:</label> <input type="datetime" name="ClinicTime" />
+        <label>Time:</label><input name="ClinicTime"/>
+    </div>
+    <div>
+        <label>Description:</label><input name="ClinicDescription" />
+    </div>
+    <div>
         <input type="submit" value="Add Clinic" />
     </div>
 </form>
-
