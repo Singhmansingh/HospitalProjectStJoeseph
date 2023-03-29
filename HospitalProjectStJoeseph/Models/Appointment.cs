@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HospitalProjectStJoeseph.Models;
 
-namespace MyApp.Models
+namespace HospitalProjectStJoeseph.Models
 {
     public class Appointment
     {
@@ -18,9 +18,9 @@ namespace MyApp.Models
         public int physicianId { get; set; }
         public virtual Physician Physician { get; set; }
 
-        public DateTime appointment_date { get; set; }
+        public DateTime appointment_start { get; set; }
 
-        public int duration { get; set; }
+        public DateTime appointment_end { get; set; }
 
         [ForeignKey("Service")]
         public int servicesId { get; set; }
