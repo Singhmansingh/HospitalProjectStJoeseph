@@ -1,0 +1,17 @@
+﻿@model HospitalProjectStJoeseph.Models.ViewModels.DetailsService
+
+
+@{
+    ViewBag.Title = "View";
+}
+
+<a href="/Service/List">Go back to list</a>
+<br />
+<a href="/Service/Edit/@Model.SelectedService.ServiceId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Service/DeleteConfirm/@Model.SelectedService.ServiceId">Delete</a>
+<h2>@Model.SelectedService.ServiceName</h2>
+<div><p>@Model.SelectedService.ServiceTime</p></div>
+
+
+

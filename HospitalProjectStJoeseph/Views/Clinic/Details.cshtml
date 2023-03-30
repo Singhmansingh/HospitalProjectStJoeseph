@@ -1,0 +1,13 @@
+﻿@model HospitalProjectStJoeseph.Models.ViewModels.DetailsClinic
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Clinic/List">Go back to list</a>
+<br />
+<a href="/Clinic/Edit/@Model.SelectedClinic.ClinicId">Update</a>
+<br />
+<a style="color:#ab2020;" href="/Clinic/DeleteConfirm/@Model.SelectedClinic.ClinicId">Delete</a>
+<h2>@Model.SelectedClinic.ClinicName</h2>
+<div>Time:@Model.SelectedClinic.ClinicTime</div>
+<div>Description: @Model.SelectedClinic.ClinicDescription</div>

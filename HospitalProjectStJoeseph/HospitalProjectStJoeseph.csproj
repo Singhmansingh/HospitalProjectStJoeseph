@@ -59,11 +59,11 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -235,6 +235,10 @@
     <Compile Include="Migrations\202303290432297_ReqForeignKey.designer.cs">
       <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
+    <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
+      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BestWish.cs" />
@@ -245,6 +249,9 @@
     <Compile Include="Models\Requisition.cs" />
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Test.cs" />
+    <Compile Include="Models\ViewModels\DetailsClinic.cs" />
+    <Compile Include="Models\ViewModels\DetailsService.cs" />
+    <Compile Include="Models\ViewModels\UpdateClinic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -315,13 +322,13 @@
     <Content Include="Views\Patient\Update.cshtml" />
     <Content Include="Views\Patient\Delete.cshtml" />
     <Content Include="Views\Clinic\List.cshtml" />
-    <Content Include="Views\Clinic\Delete.cshtml" />
+    <Content Include="Views\Clinic\DeleteConfirm.cshtml" />
     <Content Include="Views\Clinic\New.cshtml" />
-    <Content Include="Views\Clinic\Update.cshtml" />
+    <Content Include="Views\Clinic\Error.cshtml" />
     <Content Include="Views\Service\List.cshtml" />
     <Content Include="Views\Service\New.cshtml" />
-    <Content Include="Views\Service\Update.cshtml" />
-    <Content Include="Views\Service\Delete.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Service\DeleteConfirm.cshtml" />
     <Content Include="Views\Requisition\New.cshtml" />
     <Content Include="Views\Requisition\List.cshtml" />
     <Content Include="Views\Requisition\Delete.cshtml" />
@@ -338,11 +345,15 @@
     <Content Include="Views\Appointments\List.cshtml" />
     <Content Include="Views\Appointments\Update.cshtml" />
     <Content Include="Views\Appointments\Delete.cshtml" />
+    <Content Include="Views\Clinic\Details.cshtml" />
+    <Content Include="Views\Clinic\Edit.cshtml" />
     <Content Include="Views\BestWishes\Show.cshtml" />
     <Content Include="Views\Patient\Show.cshtml" />
     <Content Include="Views\Patient\DeleteConfirm.cshtml" />
     <Content Include="Views\Requisition\DeleteConfirm.cshtml" />
     <Content Include="Views\Test\DeleteConfirm.cshtml" />
+    <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -385,6 +396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303290432297_ReqForeignKey.resx">
       <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
+      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,7 +1,19 @@
 ﻿
-@{
-    ViewBag.Title = "New";
+@{ 
+    ViewBag.Title = "Create";
 }
-
-<h2>New</h2>
-
+<h2>Create Clinic</h2>
+<form action="/Clinic/Create" method="post">
+    <div>
+        <label>Name:</label><input name="ClinicName"/>
+    </div>
+    <div>
+        <label>Time:</label><input name="ClinicTime"/>
+    </div>
+    <div>
+        <label>Description:</label><input name="ClinicDescription" />
+    </div>
+    <div>
+        <input type="submit" value="Add Clinic" />
+    </div>
+</form>

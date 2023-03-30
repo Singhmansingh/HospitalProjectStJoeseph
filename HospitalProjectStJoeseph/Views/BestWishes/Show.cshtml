@@ -4,8 +4,15 @@
 }
 
 <h2>New Best Wish!</h2>
-<p>@Model.BestWishSendDate</p>
+
+<a href="/BestWishes/Update/@Model.BestWishId" class="btn btn-primary">Edit</a>
+<button onclick="confirmDeletion()" class="btn btn-danger">Delete</button>
+
+<div id="DeleteConfirmBox" class="hide"></div>
+
 <h3>From @Model.BestWishSender</h3>
+<p>@Model.BestWishSendDate.ToLongDateString()</p>
+
 <p>Message: @Model.BestWishMessage</p>
 
 <div>
@@ -13,3 +20,29 @@
     <p>Email: @Model.BestWishSenderEmail</p>
     <p>Phone #: @Model.BestWishSenderPhone</p>
 </div>
+
+<script>
+    function gid(id) {
+        return document.getElementById(id);
+    }
+    function confirmDeletion() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/BestWishes/DeleteConfirm/@Model.BestWishId", true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4)
+                if (xhr.status === 200)
+                    loadConfirmBox(xhr.response)
+        }
+        xhr.send(null);
+    }
+
+    function loadConfirmBox(content) {
+        gid("DeleteConfirmBox").innerHTML = content;
+        gid("DeleteConfirmBox").classList.remove("hide");
+    }
+
+    function cancel() {
+        gid("DeleteConfirmBox").classList.add("hide");
+    }
+
+</script>

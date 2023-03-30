@@ -83,7 +83,7 @@ namespace HospitalProjectStJoeseph.Controllers
                 return BadRequest();
             }
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok();
 
         }
 
