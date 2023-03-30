@@ -1,0 +1,100 @@
+﻿@model HospitalProjectStJoeseph.Models.TestDto
+
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+
+<h2>Are you sure you want to delete this Test <strong>'@Model.test_category'</strong>?</h2>
+
+<div>
+    <table id="TestListTable">
+        <tr>
+            <th id="thID">Test ID</th>
+            <th id="thName">test_category</th>
+            <th id="thDate">test_date</th>
+        </tr>
+        <tr>
+            <td id="tdID"><a href="/Test/Details/@Model.TestID">@Model.TestID</a></td>
+            <td id="tdName"><a href="/Test/Details/@Model.TestID">@Model.test_category</a></td>
+            <td id="tdDate"><a href="/Test/Details/@Model.TestID">@Model.test_date</a></td>
+        </tr>
+    </table>
+</div>
+
+<div id="btnContainer">
+    <div>
+        <a href="/Test/List" id="backbtn">Cancel</a>
+    </div>
+    <div>
+        <form action="/Test/Delete/@Model.TestID" method="POST">
+            <input type="submit" value="Confirm Delete" id="delBtn" />
+        </form>
+    </div>
+</div>
+
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    h1 {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold 700;
+        margin-top: 2em;
+        margin-bottom: 0;
+    }
+
+    h2 {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold 400;
+        margin: 1em auto;
+    }
+
+    #TestListTable {
+        border-style: solid;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: fixed;
+        width: 40%;
+    }
+
+    #thID, #tdID {
+        width: 100px;
+        text-align: center;
+    }
+
+    #thName, #tdName {
+        width: 240px;
+        text-align: center;
+    }
+
+    th, td {
+        border: 1px solid black;
+    }
+
+    #btnContainer {
+        display: flex;
+        flex-flow: row;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    #delBtn {
+        border: 1px solid;
+        border-radius: 5px;
+        margin-top: 1em;
+        padding: 0.5em;
+        color: red;
+    }
+
+    #backbtn {
+        border: 1px solid;
+        border-radius: 5px;
+        margin-top: 1em;
+        margin-right: 4em;
+        padding: 0.64em;
+        color: blue;
+    }
+</style>
