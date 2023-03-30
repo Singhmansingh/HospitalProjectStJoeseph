@@ -1,7 +1,116 @@
-﻿
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.Requisition>
 @{
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+
+<h1>Requisition List</h1>
+
+
+<div class="container">
+    @foreach (var Requisition in Model)
+    {
+        <div class="Requisition">
+            <div class="details">
+                <h2 class="RequisitionID"><a href="/Requisition/Details/@Requisition.RequisitionID">@Requisition.RequisitionID</a></h2>
+                <p class="patient_id">Movie ID: @Requisition.Patient.PatientId</p>
+                <p class="physician_id">Director: @Requisition.Physician.physician_id</p>
+                <p class="clinic_id">Publication Year: @Requisition.Clinic.ClinicId</p>
+                <p class="test_id">Ratings: @Requisition.Test.TestID</p>
+                <p class="record_date">Ratings: @Requisition.record_date</p>
+                <p class="test_result">Ratings: @Requisition.test_result</p>
+            </div>
+        </div>
+    }
+
+</div>
+<div class="button-container">
+
+    <a class="button-add" href="/Requisition/New">New Requisition</a>
+    <a class="button-back" href="/">BACK</a>
+</div>
+
+
+<style>
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+        color: #444;
+    }
+
+    .container {
+        max-width: 90%;
+        margin: 0 auto;
+        padding-right: 30px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .movie {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 20px;
+    }
+
+    .poster {
+        width: 120px;
+        height: 180px;
+        margin-right: 20px;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .details {
+        flex: 1;
+        color: #333;
+    }
+
+    .title {
+        font-size: 24px;
+        margin: 0 0 10px;
+    }
+
+    .button-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 32px;
+    }
+
+    .button-add {
+        padding: 10px 20px;
+        background-color: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .button-add:hover {
+            background-color: #d32f2f;
+        }
+
+    .button-back {
+        padding: 10px 20px;
+        background-color: #2196f3;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-left: 20px;
+    }
+
+        .button-back:hover {
+            background-color: #1976d2;
+        }
+</style>
+
+
 

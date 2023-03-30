@@ -231,6 +231,10 @@
     <Compile Include="Migrations\202303271617240_EmptyMigration.designer.cs">
       <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303290432297_ReqForeignKey.cs" />
+    <Compile Include="Migrations\202303290432297_ReqForeignKey.designer.cs">
+      <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
     <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
       <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
@@ -344,7 +348,12 @@
     <Content Include="Views\Clinic\Details.cshtml" />
     <Content Include="Views\Clinic\Edit.cshtml" />
     <Content Include="Views\BestWishes\Show.cshtml" />
+    <Content Include="Views\Patient\Show.cshtml" />
+    <Content Include="Views\Patient\DeleteConfirm.cshtml" />
+    <Content Include="Views\Requisition\DeleteConfirm.cshtml" />
+    <Content Include="Views\Test\DeleteConfirm.cshtml" />
     <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -384,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303271617240_EmptyMigration.resx">
       <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303290432297_ReqForeignKey.resx">
+      <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
       <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>

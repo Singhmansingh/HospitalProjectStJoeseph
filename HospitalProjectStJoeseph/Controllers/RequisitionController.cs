@@ -3,86 +3,136 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Diagnostics;
+using System.Net.Http;
+using HospitalProjectStJoeseph.Models;
+using System.Web.Script.Serialization;
 
 namespace HospitalProjectStJoeseph.Controllers
 {
+    // set up CRUD functions for Requisition  
     public class RequisitionController : Controller
     {
-        // GET: Requisition
-        public ActionResult Index()
+        private static readonly HttpClient client;
+        private JavaScriptSerializer jss = new JavaScriptSerializer();
+
+        static RequisitionController()
         {
+            // set up the base url address
+            client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44368/api/");
+        }
+
+        public ActionResult List()
+        {
+            //curl https://localhost:44368/api/Requisitiondata/listRequisitions
+
+
+            string url = "Requisitiondata/listRequisitions";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+
+            //Debug.WriteLine(response.StatusCode);
+
+            IEnumerable<RequisitionDto> Requisitions = response.Content.ReadAsAsync<IEnumerable<RequisitionDto>>().Result;
+
+            //Debug.WriteLine(Requisitions.Count());
+
+            return View(Requisitions);
+        }
+
+
+        public ActionResult Error()
+        {
+            // error view page
             return View();
         }
 
-        // GET: Requisition/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
-        // GET: Requisition/Create
-        public ActionResult Create()
+        public ActionResult New()
         {
-            return View();
+            //show a list of tests
+
+            string url = "testdata/listtest";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            IEnumerable<TestDto> TestOptions = response.Content.ReadAsAsync<IEnumerable<TestDto>>().Result;
+
+            return View(TestOptions);
         }
 
         // POST: Requisition/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Requisition Requisition)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            //add a new Requisition
+            string url = "requisitiondata/addrequisition";
+
+            // json
+            string jsonpayload = jss.Serialize(Requisition);
+            //Debug.WriteLine(jsonpayload);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
             }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+
+
         }
 
-        // GET: Requisition/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
 
-        // POST: Requisition/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Update(int id, Requisition Requisition)
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+            string url = "requisitiondata/updaterequisition/" + id;
+            string jsonpayload = jss.Serialize(Requisition);
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            // Debug.WriteLine(content);
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
             }
         }
 
-        // GET: Requisition/Delete/5
+
+        public ActionResult DeleteConfirm(int id)
+        {
+            string url = "requisitiondata/findrequisition/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            RequisitionDto RequisitionDto = response.Content.ReadAsAsync<RequisitionDto>().Result;
+            return View(RequisitionDto);
+        }
+
+
+        [HttpPost]
         public ActionResult Delete(int id)
         {
-            return View();
-        }
+            string url = "requisitiondata/deleterequisition/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
-        // POST: Requisition/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
+            if (response.IsSuccessStatusCode)
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Error");
             }
         }
     }
