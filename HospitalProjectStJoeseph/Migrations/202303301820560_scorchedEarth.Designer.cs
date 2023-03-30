@@ -7,13 +7,13 @@ namespace HospitalProjectStJoeseph.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Services : IMigrationMetadata
+    public sealed partial class scorchedEarth : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Services));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(scorchedEarth));
         
         string IMigrationMetadata.Id
         {
-            get { return "202303222300599_Services"; }
+            get { return "202303301820560_scorchedEarth"; }
         }
         
         string IMigrationMetadata.Source

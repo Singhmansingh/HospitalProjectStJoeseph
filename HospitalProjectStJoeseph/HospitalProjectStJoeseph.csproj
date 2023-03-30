@@ -203,41 +203,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303230427537_ReqTest.cs" />
-    <Compile Include="Migrations\202303230427537_ReqTest.designer.cs">
-      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303222255353_Clinics.cs" />
-    <Compile Include="Migrations\202303222255353_Clinics.designer.cs">
-      <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303222300599_Services.cs" />
-    <Compile Include="Migrations\202303222300599_Services.designer.cs">
-      <DependentUpon>202303222300599_Services.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231758529_Patient-BestWishes.cs" />
-    <Compile Include="Migrations\202303231758529_Patient-BestWishes.designer.cs">
-      <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231828399_test.cs" />
-    <Compile Include="Migrations\202303231828399_test.designer.cs">
-      <DependentUpon>202303231828399_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231852492_physicians.cs" />
-    <Compile Include="Migrations\202303231852492_physicians.designer.cs">
-      <DependentUpon>202303231852492_physicians.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303271617240_EmptyMigration.cs" />
-    <Compile Include="Migrations\202303271617240_EmptyMigration.designer.cs">
-      <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303290432297_ReqForeignKey.cs" />
-    <Compile Include="Migrations\202303290432297_ReqForeignKey.designer.cs">
-      <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    <Compile Include="Migrations\202303301820560_scorchedEarth.cs" />
+    <Compile Include="Migrations\202303301820560_scorchedEarth.designer.cs">
+      <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -353,7 +321,6 @@
     <Content Include="Views\Requisition\DeleteConfirm.cshtml" />
     <Content Include="Views\Test\DeleteConfirm.cshtml" />
     <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
-
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -373,32 +340,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303230427537_ReqTest.resx">
-      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303222255353_Clinics.resx">
-      <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303222300599_Services.resx">
-      <DependentUpon>202303222300599_Services.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231758529_Patient-BestWishes.resx">
-      <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231828399_test.resx">
-      <DependentUpon>202303231828399_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231852492_physicians.resx">
-      <DependentUpon>202303231852492_physicians.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303271617240_EmptyMigration.resx">
-      <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303290432297_ReqForeignKey.resx">
-      <DependentUpon>202303290432297_ReqForeignKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303301820560_scorchedEarth.resx">
+      <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
