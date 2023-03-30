@@ -11,3 +11,26 @@
 <h2>@Model.SelectedClinic.ClinicName</h2>
 <div>Time:@Model.SelectedClinic.ClinicTime</div>
 <div>Description: @Model.SelectedClinic.ClinicDescription</div>
+
+<div>
+    <h2>Services Provided by @Model.SelectedClinic.ClinicName:</h2>
+    @foreach (var service in Model.ProvidedServices)
+    {
+
+        <a href="/Service/Details/@service.ServiceId">@service.ServiceName</a> <a style="color:#ab2020;" href="/Clinic/Unassociate/@Model.SelectedClinic.ClinicId?ServiceId=@service.ServiceId">[x]</a><br />
+    }
+
+    <div>
+        <h4>Add new Service that is provided by @Model.SelectedClinic.ClinicName</h4>
+        <form method="POST" action="/Clinic/Associate/@Model.SelectedClinic.ClinicId">
+            <select name="KeeperID">
+                @foreach (var service in Model.UnprovidedServices)
+                {
+                    <option value="@service.ServiceId">@service.ServiceName</option>
+                }
+
+            </select>
+            <input type="submit" value="Provide Service" />
+        </form>
+    </div>
+</div>

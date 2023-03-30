@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using Microsoft.Owin.Security;
 
 namespace HospitalProjectStJoeseph.Controllers
 {
@@ -19,10 +20,10 @@ namespace HospitalProjectStJoeseph.Controllers
         [HttpGet]
         public IEnumerable<ClinicDto> ListClinics()
         {
-            List<Clinic> clinics =  db.Clinics.ToList();
-            List <ClinicDto> clinicDtos = new List<ClinicDto>();
+            List<Clinic> clinics = db.Clinics.ToList();
+            List<ClinicDto> clinicDtos = new List<ClinicDto>();
 
-            clinics.ForEach(c => clinicDtos.Add(new ClinicDto(){
+            clinics.ForEach(c => clinicDtos.Add(new ClinicDto() {
                 ClinicId = c.ClinicId,
                 ClinicName = c.ClinicName,
                 ClinicDescription = c.ClinicDescription,
@@ -32,6 +33,68 @@ namespace HospitalProjectStJoeseph.Controllers
             return clinicDtos;
 
         }
+
+        //GET: api/ClinicData/ListClinicsForService/5
+        [HttpGet]
+        [ResponseType(typeof(ClinicDto))]
+        public IHttpActionResult ListClinicsforService(int id)
+        {
+            List<Clinic> clinics = db.Clinics.Where(
+                c=>c.Services.Any(
+                    s=>s.ServiceId == id
+                    )).ToList();
+            List<ClinicDto> clinicDtos = new List<ClinicDto>();
+
+            clinics.ForEach(c => clinicDtos.Add(new ClinicDto()
+            {
+                ClinicId = c.ClinicId,
+                ClinicName = c.ClinicName,
+                ClinicDescription = c.ClinicDescription,
+                ClinicTime= c.ClinicTime
+            }));
+
+            return Ok(clinicDtos);
+
+        }
+
+        //POST: api/ClinicData/AssociateClinicWithService/9/2
+        [HttpPost]
+        [Route("api/ClinicData/AssociateClinicWithService/{clinicid}/{serviceid}")]
+        public IHttpActionResult AssociateClinicWithService(int ClinicId, int ServiceId)
+        {
+            Clinic SelectedClinic = db.Clinics.Include(c => c.Services).Where(c => c.ClinicId == ClinicId).FirstOrDefault();
+            Service SelectedService = db.Services.Find(ServiceId);
+
+            if (SelectedClinic == null || SelectedService == null)
+            {
+                return NotFound();
+            }
+
+            SelectedClinic.Services.Add(SelectedService);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        //POST: api/ClinicData/UnAssociateClinicWithService/9/2
+        [HttpPost]
+        [Route("api/ClinicData/UnAssociateClinicWithService/{clinicid}/{serviceid}")]
+        public IHttpActionResult UnAssociateClinicWithService(int ClinicId, int ServiceId)
+        {
+            Clinic SelectedClinic = db.Clinics.Include(c=> c.Services).Where(c=> c.ClinicId==ClinicId).FirstOrDefault();
+            Service SelectedService = db.Services.Find(ServiceId);
+
+            if(SelectedClinic == null || SelectedService == null)
+            {
+                return NotFound();
+            }
+
+            SelectedClinic.Services.Remove(SelectedService);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        
 
         // GET: api/ClinicData/FindClinic/5
         [ResponseType(typeof(ClinicDto))]

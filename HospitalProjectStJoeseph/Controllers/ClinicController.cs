@@ -20,13 +20,13 @@ namespace HospitalProjectStJoeseph.Controllers
         static ClinicController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44368/api/clinicdata/");
+            client.BaseAddress = new Uri("https://localhost:44368/api/");
         }
 
         // GET: Clinic/List
         public ActionResult List()
         {
-            string url = "listclinics";
+            string url = "clinicdata/listclinics";
             HttpResponseMessage response = client.GetAsync(url).Result;
             IEnumerable<ClinicDto> clinics = response.Content.ReadAsAsync<IEnumerable<ClinicDto>>().Result;
 
@@ -37,11 +37,25 @@ namespace HospitalProjectStJoeseph.Controllers
         public ActionResult Details(int id)
         {
             DetailsClinic ViewModel = new DetailsClinic();
-            string url = "findclinic/" + id;
+            string url = "clinicdata/findclinic/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ClinicDto SelectedClinic = response.Content.ReadAsAsync<ClinicDto>().Result;
 
             ViewModel.SelectedClinic = SelectedClinic;
+
+            //Show associated services with this clinic
+            url = "servicedata/listservicesforclinic/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<ServiceDto> ProvidedService = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
+
+            ViewModel.ProvidedServices = ProvidedService;
+
+            //show unassociated serives with this clinic
+            url = "servicedata/listservicesnotforclinic/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<ServiceDto> UnProvidedService = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
+
+            ViewModel.UnprovidedServices = UnProvidedService;
                        
             return View(ViewModel);
         }
@@ -85,7 +99,7 @@ namespace HospitalProjectStJoeseph.Controllers
         [HttpPost]
         public ActionResult Create(Clinic clinic)
         {
-            string url = "addclinic";
+            string url = "clinicdata/addclinic";
             string jsonpayload = jss.Serialize(clinic);
 
             HttpContent content = new StringContent(jsonpayload);
@@ -107,7 +121,7 @@ namespace HospitalProjectStJoeseph.Controllers
         public ActionResult Edit(int id)
         {
 
-            string url = "findclinic/" + id;
+            string url = "clinicdata/findclinic/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ClinicDto SelectedClinic = response.Content.ReadAsAsync<ClinicDto>().Result;
             return View(SelectedClinic);
@@ -117,7 +131,7 @@ namespace HospitalProjectStJoeseph.Controllers
         [HttpPost]
         public ActionResult Update(int id, Clinic clinic)
         {
-            string url = "updateclinic/" + id;
+            string url = "clinicdata/updateclinic/" + id;
             string jsonpayload = jss.Serialize(clinic);
             HttpContent content = new StringContent(jsonpayload);
             content.Headers.ContentType.MediaType = "application/json";

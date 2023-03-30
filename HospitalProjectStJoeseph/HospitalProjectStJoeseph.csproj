@@ -231,9 +231,9 @@
     <Compile Include="Migrations\202303271617240_EmptyMigration.designer.cs">
       <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    <Compile Include="Migrations\202303301704059_TestMigration.cs" />
+    <Compile Include="Migrations\202303301704059_TestMigration.designer.cs">
+      <DependentUpon>202303301704059_TestMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -385,8 +385,8 @@
     <EmbeddedResource Include="Migrations\202303271617240_EmptyMigration.resx">
       <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303301704059_TestMigration.resx">
+      <DependentUpon>202303301704059_TestMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
