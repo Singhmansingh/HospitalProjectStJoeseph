@@ -37,6 +37,7 @@ namespace HospitalProjectStJoeseph.Controllers
         public ActionResult Details(int id)
         {
             DetailsClinic ViewModel = new DetailsClinic();
+
             string url = "clinicdata/findclinic/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             ClinicDto SelectedClinic = response.Content.ReadAsAsync<ClinicDto>().Result;
@@ -53,9 +54,9 @@ namespace HospitalProjectStJoeseph.Controllers
             //show unassociated serives with this clinic
             url = "servicedata/listservicesnotforclinic/" + id;
             response = client.GetAsync(url).Result;
-            IEnumerable<ServiceDto> UnProvidedService = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
+            IEnumerable<ServiceDto> UnprovidedServices = response.Content.ReadAsAsync<IEnumerable<ServiceDto>>().Result;
 
-            ViewModel.UnprovidedServices = UnProvidedService;
+            ViewModel.UnprovidedServices = UnprovidedServices; 
                        
             return View(ViewModel);
         }

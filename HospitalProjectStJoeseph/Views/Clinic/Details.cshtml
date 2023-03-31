@@ -23,12 +23,11 @@
     <div>
         <h4>Add new Service that is provided by @Model.SelectedClinic.ClinicName</h4>
         <form method="POST" action="/Clinic/Associate/@Model.SelectedClinic.ClinicId">
-            <select name="KeeperID">
+            <select name="ServiceId">
                 @foreach (var service in Model.UnprovidedServices)
                 {
                     <option value="@service.ServiceId">@service.ServiceName</option>
                 }
-
             </select>
             <input type="submit" value="Provide Service" />
         </form>

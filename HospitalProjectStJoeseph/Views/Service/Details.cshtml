@@ -14,4 +14,13 @@
 <div><p>@Model.SelectedService.ServiceTime</p></div>
 
 
+<div>
+    <h3>Clinics that provide this service:</h3>
+    @foreach (var clinic in Model.ProvidedClinic)
+    {
+        <a href="/Clinic/Details/@clinic.ClinicId">@clinic.ClinicName</a><br />
+
+    }
+</div>
+
 

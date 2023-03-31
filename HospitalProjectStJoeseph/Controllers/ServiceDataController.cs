@@ -36,7 +36,7 @@ namespace HospitalProjectStJoeseph.Controllers
         //GET: api/ServiceData/
         [HttpGet]
         [ResponseType(typeof(ServiceDto))]
-        public IHttpActionResult ListServiceforClinic(int id)
+        public IHttpActionResult ListServicesforClinic(int id)
         {
             List<Service> services = db.Services.Where(
                 s => s.Clinic.Any(
@@ -57,7 +57,7 @@ namespace HospitalProjectStJoeseph.Controllers
         //GET: api/ServiceData/
         [HttpGet]
         [ResponseType(typeof(ServiceDto))]
-        public IHttpActionResult ListServicesNotProvidedForClinic(int id)
+        public IHttpActionResult ListServicesNotForClinic(int id)
         {
             List<Service> services = db.Services.Where(
                 s => !s.Clinic.Any(

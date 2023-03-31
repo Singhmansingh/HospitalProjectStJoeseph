@@ -41,6 +41,12 @@ namespace HospitalProjectStJoeseph.Controllers
             ServiceDto SelectedService = response.Content.ReadAsAsync<ServiceDto>().Result;
 
             ViewModel.SelectedService = SelectedService;
+
+            url = "clinicdata/listclinicsforservice/" + id;
+            response = client.GetAsync(url).Result;
+            IEnumerable<ClinicDto> ProvidedClinic = response.Content.ReadAsAsync<IEnumerable<ClinicDto>>().Result;
+
+            ViewModel.ProvidedClinic = ProvidedClinic;
                       
             return View(ViewModel);
         }
