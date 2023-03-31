@@ -5,8 +5,8 @@
 }
 
 <h2>Are you sure you want to delete this Service?</h2>
-<a href="/Clinic/List">Cancel</a>
+<a href="/Clinic/List" class="btn btn-primary">Cancel</a>
 <h3>Name: @Model.ClinicName</h3>
 <form action="/Clinic/Delete/@Model.ClinicId" method="POST">
-    <input type="submit" value="Confirm Delete" />
+    <input type="submit" value="Confirm Delete" class="btn btn-danger" />
 </form>

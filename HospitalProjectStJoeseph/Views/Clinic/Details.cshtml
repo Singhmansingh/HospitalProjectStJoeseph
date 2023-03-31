@@ -3,11 +3,11 @@
     ViewBag.Title = "Details";
 }
 
-<a href="/Clinic/List">Go back to list</a>
+<a href="/Clinic/List" class="btn btn-primary">Go back to list</a>
 <br />
-<a href="/Clinic/Edit/@Model.SelectedClinic.ClinicId">Update</a>
+<a href="/Clinic/Edit/@Model.SelectedClinic.ClinicId" class="btn btn-success">Update</a>
 <br />
-<a style="color:#ab2020;" href="/Clinic/DeleteConfirm/@Model.SelectedClinic.ClinicId">Delete</a>
+<a href="/Clinic/DeleteConfirm/@Model.SelectedClinic.ClinicId" class="btn btn-danger">Delete</a>
 <h2>@Model.SelectedClinic.ClinicName</h2>
 <div>Time:@Model.SelectedClinic.ClinicTime</div>
 <div>Description: @Model.SelectedClinic.ClinicDescription</div>
@@ -29,7 +29,7 @@
                     <option value="@service.ServiceId">@service.ServiceName</option>
                 }
             </select>
-            <input type="submit" value="Provide Service" />
+            <input type="submit" value="Provide Service" class="btn btn-primary" />
         </form>
     </div>
 </div>

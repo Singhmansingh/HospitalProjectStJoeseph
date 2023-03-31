@@ -5,11 +5,11 @@
     ViewBag.Title = "View";
 }
 
-<a href="/Service/List">Go back to list</a>
+<a href="/Service/List" class="btn btn-primary">Go back to list</a>
 <br />
-<a href="/Service/Edit/@Model.SelectedService.ServiceId">Update</a>
+<a href="/Service/Edit/@Model.SelectedService.ServiceId" class="btn btn-success">Update</a>
 <br />
-<a style="color:#ab2020;" href="/Service/DeleteConfirm/@Model.SelectedService.ServiceId">Delete</a>
+<a href="/Service/DeleteConfirm/@Model.SelectedService.ServiceId" class="btn btn-danger">Delete</a>
 <h2>@Model.SelectedService.ServiceName</h2>
 <div><p>@Model.SelectedService.ServiceTime</p></div>
 

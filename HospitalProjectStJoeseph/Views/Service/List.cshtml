@@ -4,7 +4,7 @@
 }
 
 <h2>List</h2>
-<a href="/Service/New">New Service</a>
+<a href="/Service/New" class="btn btn-success">New Service</a>
 @foreach (var service in Model)
 {
     <h2><a href="/Service/Details/@service.ServiceId">@service.ServiceName, @service.ServiceTime</a></h2>
