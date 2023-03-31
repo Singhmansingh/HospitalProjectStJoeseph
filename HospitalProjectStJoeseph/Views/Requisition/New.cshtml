@@ -1,7 +1,83 @@
-﻿
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.TestDto>
+
 @{
-    ViewBag.Title = "New";
+    ViewBag.Title = "Create";
 }
 
-<h2>New</h2>
 
+<h2>Add A New Requisition</h2>
+
+
+<form action="/Requisition/Create" method="POST">
+    <div class="addInput">
+        <label>RequisitionID:</label> <input type="number" name="RequisitionID" />
+    </div>
+    <div class="addInput">
+        <label>patient_id:</label> <input type="number" name="patient_id" />
+    </div>
+    <div class="addInput">
+        <label>physician_id:</label> <input type="number" name="physician_id" />
+    </div>
+    <div class="addInput">
+        <label>clinic_id:</label> <input type="number" name="clinic_id" />
+    </div>
+    <div class="addInput">
+        <label>test_id:</label> <input type="number" name="test_id" />
+    </div>
+    <div class="addInput">
+        <label>record_date:</label> <input type="datetime" name="record_date" />
+    </div>
+    <div class="addInput">
+        <label>test_result:</label> <input type="text" name="test_result" />
+    </div>
+
+    <div id="btnContainer">
+        <div>
+            <input type="submit" value="Add Requisition" id="addBtn" />
+        </div>
+        <div>
+            <a id="backbtn" href="/Requisition/List">Back to List</a>
+        </div>
+    </div>
+</form>
+
+<style>
+    body {
+        text-align: center;
+    }
+
+    #addBtn {
+        border: 1px solid;
+        border-radius: 5px;
+        margin-top: 1em;
+        padding: 0.5em;
+        color: green;
+    }
+
+    #backbtn {
+        border: 1px solid;
+        border-radius: 5px;
+        margin-top: 1em;
+        margin-left: 4em;
+        padding: 0.66em;
+        color: blue;
+    }
+
+    .addInput {
+        margin-top: 1em;
+    }
+
+    #btnContainer {
+        display: flex;
+        flex-flow: row;
+        align-items: baseline;
+        justify-content: center;
+    }
+
+    .upBtn {
+        margin: 0;
+        position: absolute;
+        top: 60%;
+        left: 20%;
+    }
+</style>

@@ -3,86 +3,142 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Http;
+using System.Diagnostics;
+using HospitalProjectStJoeseph.Models;
+using System.Web.Script.Serialization;
 
 namespace HospitalProjectStJoeseph.Controllers
 {
     public class TestController : Controller
     {
-        // GET: Test
-        public ActionResult Index()
+
+        private static readonly HttpClient client;
+        private JavaScriptSerializer jss = new JavaScriptSerializer();
+
+        static TestController()
         {
+            client = new HttpClient();
+            client.BaseAddress = new Uri("https://localhost:44368/api/");
+        }
+
+
+        public ActionResult List()
+        {
+            //e.g. curl https://localhost:44368/api/testdata/listtests
+
+            string url = "testdata/listtests";
+            HttpResponseMessage response = client.GetAsync(url).Result;
+
+
+            Debug.WriteLine(response.StatusCode);
+            Debug.WriteLine(response.Content);
+
+            IEnumerable<TestDto> Tests = response.Content.ReadAsAsync<IEnumerable<TestDto>>().Result;
+
+            Debug.WriteLine(Tests.Count());
+
+            return View(Tests);
+        }
+
+
+        public ActionResult Error()
+        {
+
             return View();
         }
 
-        // GET: Test/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Test/Create
-        public ActionResult Create()
+        // GET: Test/New
+        public ActionResult New()
         {
             return View();
         }
 
         // POST: Test/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Test Test)
         {
-            try
-            {
-                // TODO: Add insert logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+            string url = "testdata/addtest";
+
+            string jsonpayload = jss.Serialize(Test);
+            //Debug.WriteLine(jsonpayload);
+
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
             }
+            else
+            {
+                return RedirectToAction("Error");
+            }
+
+
         }
 
         // GET: Test/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            string url = "testdata/findtest/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            TestDto TestDto = response.Content.ReadAsAsync<TestDto>().Result;
+            return View(TestDto);
         }
 
-        // POST: Test/Edit/5
+        // POST: Test/Update/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Update(int id, Test Test)
         {
-            try
-            {
-                // TODO: Add update logic here
+            // update a specific Test
+            string url = "testdata/updatetest/" + id;
+            string jsonpayload = jss.Serialize(Test);
 
-                return RedirectToAction("Index");
-            }
-            catch
+            HttpContent content = new StringContent(jsonpayload);
+            content.Headers.ContentType.MediaType = "application/json";
+
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
             }
         }
 
         // GET: Test/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult DeleteConfirm(int id)
         {
-            return View();
+            // confirmation of a Test deletion
+            string url = "testdata/findtest/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            TestDto TestDto = response.Content.ReadAsAsync<TestDto>().Result;
+            return View(TestDto);
         }
 
         // POST: Test/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            string url = "testdata/deletetest/" + id;
+            HttpContent content = new StringContent("");
+            content.Headers.ContentType.MediaType = "application/json";
+            HttpResponseMessage response = client.PostAsync(url, content).Result;
 
-                return RedirectToAction("Index");
-            }
-            catch
+            if (response.IsSuccessStatusCode)
             {
-                return View();
+                return RedirectToAction("List");
+            }
+            else
+            {
+                return RedirectToAction("Error");
             }
         }
     }

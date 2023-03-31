@@ -203,37 +203,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303230427537_ReqTest.cs" />
-    <Compile Include="Migrations\202303230427537_ReqTest.designer.cs">
-      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
+    <Compile Include="Migrations\202303301820560_scorchedEarth.cs" />
+    <Compile Include="Migrations\202303301820560_scorchedEarth.designer.cs">
+      <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303222255353_Clinics.cs" />
-    <Compile Include="Migrations\202303222255353_Clinics.designer.cs">
-      <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303222300599_Services.cs" />
-    <Compile Include="Migrations\202303222300599_Services.designer.cs">
-      <DependentUpon>202303222300599_Services.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231758529_Patient-BestWishes.cs" />
-    <Compile Include="Migrations\202303231758529_Patient-BestWishes.designer.cs">
-      <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231828399_test.cs" />
-    <Compile Include="Migrations\202303231828399_test.designer.cs">
-      <DependentUpon>202303231828399_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303231852492_physicians.cs" />
-    <Compile Include="Migrations\202303231852492_physicians.designer.cs">
-      <DependentUpon>202303231852492_physicians.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303271617240_EmptyMigration.cs" />
-    <Compile Include="Migrations\202303271617240_EmptyMigration.designer.cs">
-      <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202303301704059_TestMigration.cs" />
-    <Compile Include="Migrations\202303301704059_TestMigration.designer.cs">
-      <DependentUpon>202303301704059_TestMigration.cs</DependentUpon>
+    <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
+    <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
+      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -344,6 +320,10 @@
     <Content Include="Views\Clinic\Details.cshtml" />
     <Content Include="Views\Clinic\Edit.cshtml" />
     <Content Include="Views\BestWishes\Show.cshtml" />
+    <Content Include="Views\Patient\Show.cshtml" />
+    <Content Include="Views\Patient\DeleteConfirm.cshtml" />
+    <Content Include="Views\Requisition\DeleteConfirm.cshtml" />
+    <Content Include="Views\Test\DeleteConfirm.cshtml" />
     <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -385,8 +365,8 @@
     <EmbeddedResource Include="Migrations\202303271617240_EmptyMigration.resx">
       <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303301704059_TestMigration.resx">
-      <DependentUpon>202303301704059_TestMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
+      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
