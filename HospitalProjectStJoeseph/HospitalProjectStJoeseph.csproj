@@ -207,10 +207,6 @@
     <Compile Include="Migrations\202303301820560_scorchedEarth.designer.cs">
       <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.cs" />
-    <Compile Include="Migrations\202303291905206_AdditionalConfigs.designer.cs">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BestWish.cs" />
@@ -344,29 +340,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202303230427537_ReqTest.resx">
-      <DependentUpon>202303230427537_ReqTest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303222255353_Clinics.resx">
-      <DependentUpon>202303222255353_Clinics.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303222300599_Services.resx">
-      <DependentUpon>202303222300599_Services.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231758529_Patient-BestWishes.resx">
-      <DependentUpon>202303231758529_Patient-BestWishes.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231828399_test.resx">
-      <DependentUpon>202303231828399_test.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303231852492_physicians.resx">
-      <DependentUpon>202303231852492_physicians.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303271617240_EmptyMigration.resx">
-      <DependentUpon>202303271617240_EmptyMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202303291905206_AdditionalConfigs.resx">
-      <DependentUpon>202303291905206_AdditionalConfigs.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202303301820560_scorchedEarth.resx">
+      <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
