@@ -25,20 +25,27 @@ namespace HospitalProjectStJoeseph.Controllers
 
         public ActionResult List()
         {
-            //e.g. curl https://localhost:44368/api/testdata/listtests
 
             string url = "testdata/listtests";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-
-            Debug.WriteLine(response.StatusCode);
-            Debug.WriteLine(response.Content);
+            //Debug.WriteLine(response.StatusCode);
+            //Debug.WriteLine(response.Content);
 
             IEnumerable<TestDto> Tests = response.Content.ReadAsAsync<IEnumerable<TestDto>>().Result;
 
-            Debug.WriteLine(Tests.Count());
+            //Debug.WriteLine(Tests.Count());
 
             return View(Tests);
+        }
+
+        public ActionResult Details(int id)
+        {
+            string url = "testdata/findtest/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            Test Test = response.Content.ReadAsAsync<Test>().Result;
+
+            return View(Test);
         }
 
 

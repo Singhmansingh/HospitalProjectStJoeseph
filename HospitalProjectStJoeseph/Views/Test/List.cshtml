@@ -5,16 +5,75 @@
 }
 
 <h2>Test List</h2>
-<a href="/Test/New">New Test</a>
-@foreach (var Test in Model)
-{
-    <h2><a href="/Test/Details/@Test.TestID">@Test.TestID</a></h2>
 
-}
+<nav id="add">
+    <a class="navlink" href="/Test/New">New Test</a>
+</nav>
+
+<table id="TestListTable">
+    <tr>
+        <th id="thID">Test ID</th>
+        <th id="thName">test_category</th>
+        <th id="thDate">test_date</th>
+    </tr>
+    @foreach (var Test in Model)
+    {
+        <tr>
+            <td id="tdID"><a href="/Test/Details/@Test.TestID">@Test.TestID</a></td>
+            <td id="tdName"><a href="/Test/Details/@Test.TestID">@Test.test_category</a></td>
+            <td id="tdDate"><a href="/Test/Details/@Test.TestID">@Test.test_date</a></td>
+        </tr>
+    }
+</table>
 
 
-
-
+<style>
+    body {
+        text-align: center;
+    }
+    h1 {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold 700;
+        margin-top: 2em;
+        margin-bottom: 0;
+    }
+    h2 {
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: bold 400;
+        margin: 1em auto;
+    }
+    #add {
+        text-align: center;
+        margin: 1em auto;
+    }
+    .navlink {
+        padding: 0.2em;
+        border: 1px solid;
+        border-radius: 5px;
+    }
+    #TestListTable {
+        border-style: solid;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: fixed;
+        width: 30%;
+    }
+    #thID, #tdID {
+        width: 100px;
+        text-align: center;
+    }
+    #tdDate, #thDate {
+        width: 240px;
+        text-align: center;
+    }
+    #thName, #tdName{
+        width: 240px;
+        text-align: center;
+    }
+    th, td {
+        border: 1px solid black;
+    }
+</style>
 
 
 
@@ -30,79 +89,14 @@
     }
 
     <h2>Test List</h2>
+    <a href="/Test/New">New Test</a>
+    @foreach (var Test in Model)
+    {
+        <h2><a href="/Test/Details/@Test.TestID">@Test.TestID</a></h2>
 
-    <nav id="add">
-        <a class="navlink" href="/Test/New">New Test</a>
-    </nav>
-
-    <table id="TestListTable">
-        <tr>
-            <th id="thID">Test ID</th>
-            <th id="thName">test_category</th>
-            <th id="thDate">test_date</th>
-        </tr>
-        @foreach (var Test in Model)
-        {
-            <tr>
-                <td id="tdID"><a href="/Test/Details/@Test.TestID">@Test.TestID</a></td>
-                <td id="tdName"><a href="/Test/Details/@Test.test_category">@Test.test_category</a></td>
-                <td id="thDate"><a href="/Test/Details/@Test.test_date">@Test.test_date</a></td>
-            </tr>
-        }
-    </table>
+    }
 
 
-    <style>
-        body {
-            text-align: center;
-        }
-
-        h1 {
-            font-family: 'Ubuntu', sans-serif;
-            font-weight: bold 700;
-            margin-top: 2em;
-            margin-bottom: 0;
-        }
-
-        h2 {
-            font-family: 'Ubuntu', sans-serif;
-            font-weight: bold 400;
-            margin: 1em auto;
-        }
-
-        #add {
-            text-align: center;
-            margin: 1em auto;
-        }
-
-        .navlink {
-            padding: 0.2em;
-            border: 1px solid;
-            border-radius: 5px;
-        }
-
-        #TestListTable {
-            border-style: solid;
-            margin-left: auto;
-            margin-right: auto;
-            table-layout: fixed;
-            width: 30%;
-        }
-
-        #thID, #tdID {
-            width: 100px;
-            text-align: center;
-        }
-
-        #thName, #tdName {
-            width: 240px;
-            text-align: center;
-        }
-
-        th, td {
-            border: 1px solid black;
-        }
-    </style>
 
 
 *@

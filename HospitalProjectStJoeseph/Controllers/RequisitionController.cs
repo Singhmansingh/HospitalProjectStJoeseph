@@ -25,20 +25,24 @@ namespace HospitalProjectStJoeseph.Controllers
 
         public ActionResult List()
         {
-            //curl https://localhost:44368/api/Requisitiondata/listRequisitions
-
 
             string url = "Requisitiondata/listRequisitions";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            //Debug.WriteLine(response.StatusCode);
-
-            IEnumerable<RequisitionDto> Requisitions = response.Content.ReadAsAsync<IEnumerable<RequisitionDto>>().Result;
-
-            //Debug.WriteLine(Requisitions.Count());
+            IEnumerable<Requisition> Requisitions = response.Content.ReadAsAsync<IEnumerable<Requisition>>().Result;
 
             return View(Requisitions);
         }
+
+        public ActionResult Details(int id)
+        {
+            string url = "requisitiondata/findrequisition/" + id;
+            HttpResponseMessage response = client.GetAsync(url).Result;
+            RequisitionDto RequisitionDto = response.Content.ReadAsAsync<RequisitionDto>().Result;
+
+            return View(RequisitionDto);
+        }
+
 
 
         public ActionResult Error()

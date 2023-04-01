@@ -1,0 +1,80 @@
+﻿@model HospitalProjectStJoeseph.Models.Requisition
+
+@{
+    ViewBag.Title = "Requisition Details";
+}
+
+<h2>Requisition Details</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <td>@Model.RequisitionID</td>
+    </tr>
+    <tr>
+        <th>record_date</th>
+        <td>@Model.record_date</td>
+    </tr>
+    <tr>
+        <th>test_result</th>
+        <td>@Model.test_result</td>
+    </tr>
+    <tr>
+        <th>PatientId</th>
+        <td>@Model.Patient.PatientId</td>
+    </tr>
+    <tr>
+        <th>PatientName</th>
+        <td>@Model.Patient.PatientName</td>
+    </tr>
+    <tr>
+        <th>physician_id</th>
+        <td>@Model.Physician.physician_id</td>
+    </tr>
+    <tr>
+        <th>ClinicId</th>
+        <td>@Model.Clinic.ClinicId</td>
+    </tr>
+    <tr>
+        <th>ClinicName</th>
+        <td>@Model.Clinic.ClinicName</td>
+    </tr>
+    <tr>
+        <th>TestID</th>
+        <td>@Model.Test.TestID</td>
+    </tr>
+    <tr>
+        <th>test_category</th>
+        <td>@Model.Test.test_category</td>
+    </tr>
+    <tr>
+        <th>test_date</th>
+        <td>@Model.Test.test_date</td>
+    </tr>
+</table>
+
+
+<style>
+    .table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 1rem;
+        background-color: #fff;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    }
+    .table th {
+        padding: 0.75rem;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6;
+        background-color: #343a40;
+        color: #fff;
+        }
+    .table td {
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+    .table tbody tr:hover {
+        background-color: #f8f9fa;
+    }
+</style>

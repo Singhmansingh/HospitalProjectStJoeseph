@@ -9,7 +9,6 @@
 
 
 
-
 <div class="addInput">
     <label>RequisitionID:</label> <input type="number" name="RequisitionID" />
 </div>
@@ -34,7 +33,6 @@
 
 
 
-
 <table id="RequisitionDetailsTable">
     <tr>
         <th id="trID">RequisitionID</th>
@@ -47,10 +45,6 @@
     </tr>
     <tr>
         <td id="tdID">@Model.RequisitionID</td>
-        <td id="tdTitle">@Model.patient_id</td>
-        <td id="tdPubYear">@Model.physician_id</td>
-        <td id="tdDirector">@Model.clinic_id</td>
-        <td id="tdRatings">@Model.test_id</td>
         <td id="tdGenre">@Model.record_date</td>
         <td id="tdGenre">@Model.test_result</td>
     </tr>
@@ -72,48 +66,22 @@
     body {
         text-align: center;
     }
-
     th, td {
         border: 1px solid black;
     }
-
     #trID, #tdID, #trGenre, #tdGenre {
         width: 100px;
         text-align: center;
     }
-
-    #trTitle, #tdTitle {
-        width: 340px;
-        text-align: center;
-    }
-
-    #trDirector, #tdDirector {
-        width: 240px;
-        text-align: center;
-    }
-
-    #trPubYear, #tdPubYear {
-        width: 150px;
-        text-align: center;
-    }
-
-    #trRatings, #tdRatings {
-        width: 80px;
-        text-align: center;
-    }
-
     #RequisitionDetailsTable {
         margin-top: 2em;
     }
-
     #btnContainer {
         display: flex;
         flex-flow: row;
         align-items: baseline;
         justify-content: center;
     }
-
-
     #delBtn {
         border: 1px solid;
         border-radius: 5px;
@@ -122,11 +90,9 @@
         color: red;
         cursor: pointer;
     }
-
         #delBtn:hover {
             background-color: palevioletred;
         }
-
     #backbtn {
         border: 1px solid;
         border-radius: 5px;
@@ -136,7 +102,6 @@
         color: blue;
         cursor: pointer;
     }
-
         #backbtn:hover {
             background-color: deepskyblue;
         }

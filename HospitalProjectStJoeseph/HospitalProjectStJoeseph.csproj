@@ -321,6 +321,8 @@
     <Content Include="Views\Requisition\DeleteConfirm.cshtml" />
     <Content Include="Views\Test\DeleteConfirm.cshtml" />
     <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
+    <Content Include="Views\Requisition\Details.cshtml" />
+    <Content Include="Views\Test\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

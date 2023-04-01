@@ -1,0 +1,47 @@
+﻿@model HospitalProjectStJoeseph.Models.Test
+
+@{
+    ViewBag.Title = "Test Details";
+}
+
+<h2>Test Details</h2>
+
+<table class="table">
+    <tr>
+        <th>TestID</th>
+        <td>@Model.TestID</td>
+    </tr>
+    <tr>
+        <th>test_category</th>
+        <td>@Model.test_category</td>
+    </tr>
+    <tr>
+        <th>test_date</th>
+        <td>@Model.test_date</td>
+    </tr>
+</table>
+
+
+<style>
+    table {
+        font-family: Arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    }
+    th, td {
+        text-align: left;
+        padding: 10px;
+    }
+    th {
+        background-color: #e8e8e8;
+        font-weight: bold;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
