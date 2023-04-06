@@ -323,6 +323,8 @@
     <Content Include="Views\BestWishes\DeleteConfirm.cshtml" />
     <Content Include="Views\Requisition\Details.cshtml" />
     <Content Include="Views\Test\Details.cshtml" />
+    <Content Include="Views\Physicians\DeleteConfirm.cshtml" />
+    <Content Include="Views\Physicians\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

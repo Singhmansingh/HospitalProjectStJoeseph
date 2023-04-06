@@ -1,7 +1,36 @@
-﻿
-@{
-    ViewBag.Title = "Update";
+﻿@model HospitalProjectStJoeseph.Models.Physician
+
+<h2>Update Physician Information</h2>
+
+@using (Html.BeginForm("Save/" + Model.physician_id, "Physicians", FormMethod.Post))
+{
+    @Html.HiddenFor(model => model.physician_id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.first_name, "First Name:")
+        @Html.TextBoxFor(model => model.first_name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.last_name, "Last Name:")
+        @Html.TextBoxFor(model => model.last_name, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.specialty, "Specialty:")
+        @Html.TextBoxFor(model => model.specialty, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.phone, "Phone Number:")
+        @Html.TextBoxFor(model => model.phone, new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, "Email:")
+        @Html.TextBoxFor(model => model.email, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a href="@Url.Action("List", "Physicians")" class="btn btn-secondary">Cancel</a>
 }
-
-<h2>Update</h2>
-

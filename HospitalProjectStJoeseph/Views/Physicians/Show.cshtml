@@ -1,0 +1,20 @@
+﻿@model HospitalProjectStJoeseph.Models.Physician
+
+@{
+    ViewBag.Title = "Physician Details";
+}
+
+<h2>@Model.first_name @Model.last_name</h2>
+
+<div>
+    <p><strong>Name: </strong>@Model.first_name @Model.last_name</p>
+    <p><strong>Specialty: </strong>@Model.specialty</p>
+    <p><strong>Phone: </strong>@Model.phone</p>
+    <p><strong>Email: </strong>@Model.email</p>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Update", new { id = Model.physician_id }) |
+    @Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.physician_id }) |
+    @Html.ActionLink("Back", "List")
+</p>
