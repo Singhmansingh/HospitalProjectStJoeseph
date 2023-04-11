@@ -17,7 +17,7 @@
     @foreach (var service in Model.ProvidedServices)
     {
 
-        <a href="/Service/Details/@service.ServiceId">@service.ServiceName</a> <a style="color:#ab2020;" href="/Clinic/Unassociate/@Model.SelectedClinic.ClinicId?ServiceId=@service.ServiceId">[x]</a><br />
+        <a href="/Service/Details/@service.ServiceId">@service.ServiceName</a> <a style="color:#ab2020;" href="/Clinic/Unassociate/@Model.SelectedClinic.ClinicId?ServiceId=@service.ServiceId">Remove</a><br />
     }
 
     <div>

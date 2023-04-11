@@ -16,7 +16,15 @@ namespace HospitalProjectStJoeseph.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/ClinicData/ListClinics
+        /// <summary>
+        /// Returns all clinics in the database
+        /// </summary>
+        /// <returns>
+        /// CONTENT: all clinics in the system
+        /// </returns>
+        /// <example>
+        /// GET: api/ClinicDaa/ListClinics
+        /// </example>
         [HttpGet]
         public IEnumerable<ClinicDto> ListClinics()
         {
@@ -34,7 +42,16 @@ namespace HospitalProjectStJoeseph.Controllers
 
         }
 
-        //GET: api/ClinicData/ListClinicsForService/5
+        /// <summary>
+        /// Contain all info about any clinics related to a particular service
+        /// </summary>
+        /// <param name="id">Service ID.</param>
+        /// <returns>
+        /// CONTENT: all clinics in the database, including thier associated service
+        /// </returns>
+        /// <example>
+        /// GET: api/ClinicData/ListClinicsForService/5
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(ClinicDto))]
         public IHttpActionResult ListClinicsforService(int id)
@@ -57,7 +74,14 @@ namespace HospitalProjectStJoeseph.Controllers
 
         }
 
-        //POST: api/ClinicData/AssociateClinicWithService/9/2
+        /// <summary>
+        /// Associate a particular service with a particular clinic
+        /// </summary>
+        /// <param name="ClinicId">The clinic ID primary key</param>
+        /// <param name="ServiceId">The service ID primary key</param>
+        ///<example>
+        /// POST: api/ClinicData/AssociateClinicWithService/9/2
+        ///</example>
         [HttpPost]
         [Route("api/ClinicData/AssociateClinicWithService/{clinicid}/{serviceid}")]
         public IHttpActionResult AssociateClinicWithService(int ClinicId, int ServiceId)
@@ -76,7 +100,14 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok();
         }
 
-        //POST: api/ClinicData/UnAssociateClinicWithService/9/2
+        /// <summary>
+        /// Removes an associate between a particular service and a particular clinic
+        /// </summary>
+        /// <param name="ClinicId">The clinic ID primary Key</param>
+        /// <param name="ServiceId">The service ID primary Key</param>
+        /// <example>
+        /// POST: api/ClinicData/UnAssociateClinicWithService/9/2
+        /// </example>
         [HttpPost]
         [Route("api/ClinicData/UnAssociateClinicWithService/{clinicid}/{serviceid}")]
         public IHttpActionResult UnAssociateClinicWithService(int ClinicId, int ServiceId)
@@ -94,9 +125,18 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return Ok();
         }
-        
 
-        // GET: api/ClinicData/FindClinic/5
+
+        /// <summary>
+        /// Returns all clinics in the system
+        /// </summary>
+        /// <param name="id">The primary key of the clinic</param>
+        /// <returns>
+        /// CONTENT: An clinic in the system matching up to the clinic ID primary key
+        /// </returns>
+        /// <example>
+        /// GET: api/ClinicData/FindClinic/5
+        /// </example>
         [ResponseType(typeof(ClinicDto))]
         [HttpGet]
         public IHttpActionResult FindClinic(int id)
@@ -118,7 +158,14 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(clinicDto);
         }
 
-        // POST: api/ClinicData/updateClinic/5
+        /// <summary>
+        /// Updates a particular clinic in the system with POST Data input
+        /// </summary>
+        /// <param name="id">Represent the clinic ID primary key</param>
+        /// <param name="clinic">JSON FORM DATA of an clinic</param>
+        /// <example>
+        /// POST: api/ClinicData/updateClinic/5
+        /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
         public IHttpActionResult UpdateClinic(int id, Clinic clinic)
@@ -154,7 +201,17 @@ namespace HospitalProjectStJoeseph.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/ClinicData/AddClinic
+
+        /// <summary>
+        /// Adds an clinic to the system
+        /// </summary>
+        /// <param name="clinic">JSON FORM DATA of an clinic</param>
+        /// <returns>
+        /// CONTENT: Clinic ID, Clinic Data
+        /// </returns>
+        /// <example>
+        /// POST: api/ClinicData/AddClinic
+        /// </example>
         [ResponseType(typeof(Clinic))]
         [HttpPost]
         public IHttpActionResult AddClinic(Clinic clinic)
@@ -170,7 +227,13 @@ namespace HospitalProjectStJoeseph.Controllers
             return CreatedAtRoute("DefaultApi", new { id = clinic.ClinicId }, clinic);
         }
 
-        // POST: api/ClinicData/DeleteClinic/5
+        /// <summary>
+        /// Deletes an clinic from the system by it's ID.
+        /// </summary>
+        /// <param name="id">The primary key of the clinic</param>
+        /// <example>
+        /// POST: api/ClinicData/DeleteClinic/5
+        /// </example>
         [ResponseType(typeof(Clinic))]
         [HttpPost]
         public IHttpActionResult DeleteClinic(int id)
