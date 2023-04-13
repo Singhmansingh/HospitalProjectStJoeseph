@@ -26,6 +26,9 @@
                     <li>@Html.ActionLink("Services", "List", "Service")</li>
                     <li>@Html.ActionLink("Patients", "List", "Patient")</li>
                     <li>@Html.ActionLink("Best Wishes", "List", "BestWishes")</li>
+                    <li>
+                        @Html.ActionLink("API", "Index", "Help", new { area = "" }, null)
+                    </li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
