@@ -15,7 +15,10 @@ namespace HospitalProjectStJoeseph.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        //TODO: List Best Wishes
+        /// <summary>
+        /// List all Best Wishes
+        /// </summary>
+        /// <returns>List of Best Wishes</returns>
         [HttpGet]
         [ResponseType(typeof(List<BestWish>))]
         [Route("api/BestWishesData/ListAllBestWishes")]
@@ -25,8 +28,16 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return Ok(bestWishes);
         }
+        
 
-        //TODO: Find Best Wish by ID
+        /// <summary>
+        /// Find a Best Wish by ID
+        /// </summary>
+        /// <param name="BestWishId">Integer. Best Wish ID</param>
+        /// <returns>Best Wish</returns>
+        /// <example>
+        /// GET: api/BestWishesData/FindBestWish/1 -> Best wish of ID 1
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(BestWish))]
         [Route("api/BestWishesData/FindBestWish/{BestWishId}")]
@@ -41,8 +52,41 @@ namespace HospitalProjectStJoeseph.Controllers
             return BadRequest();
         }
 
+        /// <summary>
+        /// Gets a Patient with their associated Best Wishes
+        /// </summary>
+        /// <param name="PatientId">Patient ID</param>
+        /// <returns>Patient with Best Wishes</returns>
+        /// <example>
+        /// GET: api/BestWishesData/ListBestWishesForPatient/1 -> Patient of ID 1 Bets Wishes for Patient 1
+        /// </example>
 
-        //TODO: Add Best Wish
+        [HttpGet]
+        [ResponseType(typeof(PatientDto))]
+        [Route("api/BestWishesData/ListBestWishesForPatient/{PatientId}")]
+        public IHttpActionResult ListBestWishesForPatient(int PatientId)
+        {
+            List<BestWish> BestWishes = db.BestWishes.Where(bw => bw.PatientId == PatientId).OrderByDescending(bw=> bw.BestWishSendDate).ToList();
+            Patient Patient = db.Patients.Find(PatientId);
+            PatientDto PatientDto = new PatientDto()
+            {
+                Patient = Patient,
+                BestWishes = BestWishes
+            };
+            return Ok(PatientDto);
+        }
+
+
+        /// <summary>
+        /// Adds a new Best Wish
+        /// </summary>
+        /// <param name="BestWish">BestWish. Data to add</param>
+        /// <returns>Response Code</returns>
+        /// <example>
+        /// POST: api/BestWishesData/AddBestWish
+        /// CONTENT: Patient DATA
+        /// RESPONSE: 200 OK
+        /// </example>
         [HttpPost]
        // [Authorize]
         [Route("api/BestWishesData/AddBestWish")]
@@ -60,7 +104,17 @@ namespace HospitalProjectStJoeseph.Controllers
 
         }
 
-        //TODO: Update Best Wish
+        /// <summary>
+        /// Updates a single Best Wish
+        /// </summary>
+        /// <param name="id">Integer. Best Wish ID</param>
+        /// <param name="BestWish">BestWish. Data to update</param>
+        /// <returns>Response Code</returns>
+        /// <example>
+        /// POST: api/BestWishesData/UpdateBestWish/1 
+        /// CONTENT: BestWish
+        /// RESPONSE: 200 OK
+        /// </example>
         [HttpPost]
         // [Authorize]
         [Route("api/BestWishesData/UpdateBestWish/{id}")]
@@ -87,7 +141,14 @@ namespace HospitalProjectStJoeseph.Controllers
 
         }
 
-        //TODO: Delete Best Wish
+        /// <summary>
+        /// Removes a Best Wish from the Database
+        /// </summary>
+        /// <param name="id">Integer. Best Wish ID</param>
+        /// <returns>Response Code</returns>
+        /// <example>
+        /// POST: api/BestWishesData/DeleteBestWish/1 -> 200 OK
+        /// </example>
         [HttpPost]
         [ResponseType(typeof(BestWish))]
         // [Authorize]
@@ -106,6 +167,24 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok();
         }
 
+
+        /// <summary>
+        /// Sets a Best Wish to Read
+        /// </summary>
+        /// <param name="BestWishId">Integer. Best Wish ID</param>
+        /// <returns>Response code</returns>
+        /// <example>
+        /// GET: api/BestWishesData/SetBestWishRead/1 -> 200 OK
+        /// </example>
+        [HttpGet]
+        [Route("api/BestWishesData/SetBestWishRead/{BestWishId}")]
+        public IHttpActionResult SetBestWishRead(int BestWishId)
+        {
+            BestWish bestWish = db.BestWishes.Find(BestWishId);
+            bestWish.BestWishIsRead = true;
+            db.SaveChanges();
+            return Ok();
+        }
 
         private bool BestWishExists(int id)
         {

@@ -23,3 +23,7 @@ textarea {
     max-width: 280px;
     background-color: pink;
 }
+
+.bolded {
+    font-weight:bold;
+}

@@ -14,7 +14,13 @@ namespace HospitalProjectStJoeseph.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        //TODO: List Patients
+        /// <summary>
+        /// List all Patients
+        /// </summary>
+        /// <returns>List of all Patients</returns>
+        /// <example>
+        /// GET: api/PatientData/List
+        /// </example>
         [HttpGet]
         [ResponseType(typeof(List<Patient>))]
         [Route("api/PatientData/List")]
@@ -24,6 +30,15 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return Ok(Patients);
         }
+
+        /// <summary>
+        /// Find a single Patient
+        /// </summary>
+        /// <param name="PatientId">Integer. Patient ID</param>
+        /// <returns>Patient</returns>
+        /// <example>
+        /// GET: api/PatientData/Find/1 -> Patient
+        /// </example>
 
         [HttpGet]
         [ResponseType(typeof(Patient))]
@@ -35,12 +50,21 @@ namespace HospitalProjectStJoeseph.Controllers
             return Ok(Patient);
         }
 
-        //TODO: Add Patient
+        /// <summary>
+        /// Add a new Patient
+        /// </summary>
+        /// <param name="Patient">Patient Data</param>
+        /// <returns>Response Code</returns>
+        /// <example>
+        /// POST: api/PatientData/AddPatient
+        /// CONTENT: Patient DATA
+        /// RESPONSE: 200 OK
+        /// </example>
         [HttpPost]
         // [Authorize]
-        [Route("api/PatientData/Add")]
+        [Route("api/PatientData/AddPatient")]
 
-        public IHttpActionResult Add([FromBody] Patient Patient)
+        public IHttpActionResult AddPatient([FromBody] Patient Patient)
         {
             var res = db.Patients.Add(Patient);
             db.SaveChanges();
@@ -53,7 +77,17 @@ namespace HospitalProjectStJoeseph.Controllers
 
         }
 
-        //TODO: Update Patient
+        /// <summary>
+        /// Update a single Patient
+        /// </summary>
+        /// <param name="id">Integer. Patient ID</param>
+        /// <param name="Patient">Patient. Patient Data</param>
+        /// <returns>Response code</returns>
+        /// <example>
+        /// POST: api/PatientData/UpdatePatient/1
+        /// CONTENT: new Patient Data
+        /// RESPONSE: 
+        /// </example>
         [HttpPost]
         // [Authorize]
         [Route("api/PatientData/UpdatePatient/{id}")]
@@ -97,29 +131,6 @@ namespace HospitalProjectStJoeseph.Controllers
             db.Patients.Remove(Patient);
             db.SaveChanges();
             return Ok();
-        }
-
-        //TOD: List Best Wishes for Patient
-        [HttpGet]
-        [ResponseType(typeof(PatientDto))]
-        [Route("api/PatientData/FindPatientWithBestWishes/{PatientId}")]
-
-        public IHttpActionResult FindPatientWithBestWishes(int PatientId)
-        {
-            Patient Patient = db.Patients.Find(PatientId);
-            if (Patient == null) return NotFound();
-
-            List<BestWish> bestWishes = db.BestWishes.Where(bw => bw.PatientId == PatientId).ToList();
-
-            PatientDto dto = new PatientDto();
-            dto.Patient = Patient;
-
-            if (bestWishes.Count > 0)
-            {
-                dto.BestWishes = bestWishes;
-            }
-            return Ok(dto);
-
         }
 
 

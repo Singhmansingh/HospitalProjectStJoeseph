@@ -33,8 +33,13 @@
         {
             foreach (var bw in Model.BestWishes)
             {
-                <tr>
-                    <td><a href="/BestWishes/Show/@bw.BestWishId" class="btn btn-primary">Reply</a></td>
+                string className = "";
+                if (!bw.BestWishIsRead)
+                {
+                    className = "bolded";
+                }
+                <tr class="@className">
+                    <td><button role="link" onclick="openBestWish(@bw.BestWishId)" class="btn btn-primary">Open</button></td>
                     <td>@bw.BestWishSendDate.ToShortDateString()</td>
                     <td>@bw.BestWishSender</td>
                     <td>@bw.BestWishSenderEmail</td>
@@ -70,6 +75,20 @@
     function loadConfirmBox(content) {
         gid("DeleteConfirmBox").innerHTML = content;
         gid("DeleteConfirmBox").classList.remove("hide");
+    }
+
+
+    function openBestWish(bestWishId) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/api/BestWishesData/SetBestWishRead/" + bestWishId);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                location.href = "/BestWishes/Show/" + bestWishId;
+            }
+        }
+        xhr.send();
+
     }
 
     function cancel() {

@@ -43,7 +43,7 @@ namespace HospitalProjectStJoeseph.Controllers
         [HttpPost]
         public ActionResult Add(Patient Patient)
         {
-            string url = "PatientData/Add";
+            string url = "PatientData/AddPatient";
 
             HttpContent content = Prepare(jss.Serialize(Patient));
             HttpResponseMessage response = client.PostAsync(url, content).Result;
@@ -60,13 +60,13 @@ namespace HospitalProjectStJoeseph.Controllers
 
         public ActionResult Show(int id)
         {
-            string url = "PatientData/FindPatientWithBestWishes/" + id;
+            string url = "BestWishesData/ListBestWishesForPatient/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            PatientDto PatientDto = response.Content.ReadAsAsync<PatientDto>().Result;
+            PatientDto Patient = response.Content.ReadAsAsync<PatientDto>().Result;
 
             if (response.IsSuccessStatusCode)
             {
-                return View(PatientDto);
+                return View(Patient);
             }
 
             return Redirect("/Patient/List");
