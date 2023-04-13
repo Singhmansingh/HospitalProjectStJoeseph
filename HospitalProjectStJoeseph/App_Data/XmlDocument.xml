@@ -481,6 +481,77 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.ListAllBestWishes">
+            <summary>
+            List all Best Wishes
+            </summary>
+            <returns>List of Best Wishes</returns>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.FindBestWish(System.Int32)">
+            <summary>
+            Find a Best Wish by ID
+            </summary>
+            <param name="BestWishId">Integer. Best Wish ID</param>
+            <returns>Best Wish</returns>
+            <example>
+            GET: api/BestWishesData/FindBestWish/1 -> Best wish of ID 1
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.ListBestWishesForPatient(System.Int32)">
+            <summary>
+            Gets a Patient with their associated Best Wishes
+            </summary>
+            <param name="PatientId">Patient ID</param>
+            <returns>Patient with Best Wishes</returns>
+            <example>
+            GET: api/BestWishesData/ListBestWishesForPatient/1 -> Patient of ID 1 Bets Wishes for Patient 1
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.AddBestWish(HospitalProjectStJoeseph.Models.BestWish)">
+            <summary>
+            Adds a new Best Wish
+            </summary>
+            <param name="BestWish">BestWish. Data to add</param>
+            <returns>Response Code</returns>
+            <example>
+            POST: api/BestWishesData/AddBestWish
+            CONTENT: Patient DATA
+            RESPONSE: 200 OK
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.UpdateBestWish(System.Int32,HospitalProjectStJoeseph.Models.BestWish)">
+            <summary>
+            Updates a single Best Wish
+            </summary>
+            <param name="id">Integer. Best Wish ID</param>
+            <param name="BestWish">BestWish. Data to update</param>
+            <returns>Response Code</returns>
+            <example>
+            POST: api/BestWishesData/UpdateBestWish/1 
+            CONTENT: BestWish
+            RESPONSE: 200 OK
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.DeleteBestWish(System.Int32)">
+            <summary>
+            Removes a Best Wish from the Database
+            </summary>
+            <param name="id">Integer. Best Wish ID</param>
+            <returns>Response Code</returns>
+            <example>
+            POST: api/BestWishesData/DeleteBestWish/1 -> 200 OK
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.SetBestWishRead(System.Int32)">
+            <summary>
+            Sets a Best Wish to Read
+            </summary>
+            <param name="BestWishId">Integer. Best Wish ID</param>
+            <returns>Response code</returns>
+            <example>
+            GET: api/BestWishesData/SetBestWishRead/1 -> 200 OK
+            </example>
+        </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.ClinicDataController.ListClinics">
             <summary>
             Returns all clinics in the database
@@ -565,6 +636,50 @@
             <param name="id">The primary key of the clinic</param>
             <example>
             POST: api/ClinicData/DeleteClinic/5
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.List">
+            <summary>
+            List all Patients
+            </summary>
+            <returns>List of all Patients</returns>
+            <example>
+            GET: api/PatientData/List
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.Find(System.Int32)">
+            <summary>
+            Find a single Patient
+            </summary>
+            <param name="PatientId">Integer. Patient ID</param>
+            <returns>Patient</returns>
+            <example>
+            GET: api/PatientData/Find/1 -> Patient
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.AddPatient(HospitalProjectStJoeseph.Models.Patient)">
+            <summary>
+            Add a new Patient
+            </summary>
+            <param name="Patient">Patient Data</param>
+            <returns>Response Code</returns>
+            <example>
+            POST: api/PatientData/AddPatient
+            CONTENT: Patient DATA
+            RESPONSE: 200 OK
+            </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.UpdatePatient(System.Int32,HospitalProjectStJoeseph.Models.Patient)">
+            <summary>
+            Update a single Patient
+            </summary>
+            <param name="id">Integer. Patient ID</param>
+            <param name="Patient">Patient. Patient Data</param>
+            <returns>Response code</returns>
+            <example>
+            POST: api/PatientData/UpdatePatient/1
+            CONTENT: new Patient Data
+            RESPONSE: 
             </example>
         </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.ServiceDataController.ListServices">
