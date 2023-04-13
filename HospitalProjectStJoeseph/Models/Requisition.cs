@@ -45,7 +45,8 @@ namespace HospitalProjectStJoeseph.Models
         public int PatientId { get; set; }
         public string PatientName { get; set; }
         public int physician_id { get; set; }
-        public string physician_name { get; set; }
+        public string physician_first_name { get; set; }
+        public string physician_last_name { get; set; }
         public int ClinicId { get; set; }
         public string ClinicName { get; set; }
         public int TestID { get; set; }

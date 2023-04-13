@@ -218,6 +218,7 @@
     <Compile Include="Models\Service.cs" />
     <Compile Include="Models\Test.cs" />
     <Compile Include="Models\ViewModels\DetailsClinic.cs" />
+    <Compile Include="Models\ViewModels\DetailsRequisition.cs" />
     <Compile Include="Models\ViewModels\DetailsService.cs" />
     <Compile Include="Models\ViewModels\UpdateClinic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Diagnostics;
 using System.Net.Http;
 using HospitalProjectStJoeseph.Models;
+using HospitalProjectStJoeseph.Models.ViewModels;
 using System.Web.Script.Serialization;
 
 namespace HospitalProjectStJoeseph.Controllers
@@ -36,13 +37,27 @@ namespace HospitalProjectStJoeseph.Controllers
 
         public ActionResult Details(int id)
         {
+            //communicate with Requisition Data api to retrieve one specific Requisition
+            //e.g. curl https://localhost:44387/api/requisitiondata/findrequisition/{id}
+            // create a ViewModel to show the relationship between Requisitions and Patients
+            DetailsRequisition ViewModel = new DetailsRequisition();
+
+
             string url = "requisitiondata/findrequisition/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
-            RequisitionDto RequisitionDto = response.Content.ReadAsAsync<RequisitionDto>().Result;
+            //Debug.WriteLine(response.StatusCode);
+            RequisitionDto SelectedRequisition = response.Content.ReadAsAsync<RequisitionDto>().Result;
 
-            return View(RequisitionDto);
+            ViewModel.SelectedRequisition = SelectedRequisition;
+
+            url = "patientdata/listpatientsforrequisition/" + id;
+            response = client.GetAsync(url).Result;
+            PatientDto RelatedPatient = response.Content.ReadAsAsync<PatientDto>().Result;
+
+            ViewModel.RelatedPatient = RelatedPatient;
+
+            return View(ViewModel);
         }
-
 
 
         public ActionResult Error()
@@ -52,13 +67,14 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
 
+
         public ActionResult New()
         {
             //show a list of tests
 
             string url = "testdata/listtest";
             HttpResponseMessage response = client.GetAsync(url).Result;
-            IEnumerable<TestDto> TestOptions = response.Content.ReadAsAsync<IEnumerable<TestDto>>().Result;
+            IEnumerable<Test> TestOptions = response.Content.ReadAsAsync<IEnumerable<Test>>().Result;
 
             return View(TestOptions);
         }

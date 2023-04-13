@@ -194,7 +194,7 @@ namespace HospitalProjectStJoeseph.Controllers
         /// Deletes an Service from the system by it's ID.
         /// </summary>
         /// <param name="id">The primary key of the service</param>
-=        //POST: api/ServiceData/DeleteService/5
+        //POST: api/ServiceData/DeleteService/5
         [ResponseType(typeof(Service))]
         [HttpPost]
         public IHttpActionResult DeleteService(int id)
