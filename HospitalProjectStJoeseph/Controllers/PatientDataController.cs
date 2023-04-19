@@ -22,6 +22,7 @@ namespace HospitalProjectStJoeseph.Controllers
         /// GET: api/PatientData/List
         /// </example>
         [HttpGet]
+        [Authorize]
         [ResponseType(typeof(List<Patient>))]
         [Route("api/PatientData/List")]
         public IHttpActionResult List()

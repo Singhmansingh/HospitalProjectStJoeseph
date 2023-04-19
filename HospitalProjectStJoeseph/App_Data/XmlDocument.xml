@@ -481,6 +481,15 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.BestWishesDataController.ListAllBestWishes">
             <summary>
             List all Best Wishes
@@ -551,6 +560,15 @@
             <example>
             GET: api/BestWishesData/SetBestWishRead/1 -> 200 OK
             </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.ClinicController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
         </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.ClinicDataController.ListClinics">
             <summary>
@@ -638,6 +656,15 @@
             POST: api/ClinicData/DeleteClinic/5
             </example>
         </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
+        </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.List">
             <summary>
             List all Patients
@@ -681,6 +708,15 @@
             CONTENT: new Patient Data
             RESPONSE: 
             </example>
+        </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.ServiceController.GetApplicationCookie">
+            <summary>
+            Grabs the authentication cookie sent to this controller.
+            For proper WebAPI authentication, you can send a post request with login credentials to the WebAPI and log the access token from the response. The controller already knows this token, so we're just passing it up the chain.
+            
+            Here is a descriptive article which walks through the process of setting up authorization/authentication directly.
+            https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/individual-accounts-in-web-api
+            </summary>
         </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.ServiceDataController.ListServices">
             <summary>
