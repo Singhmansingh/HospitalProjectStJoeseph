@@ -2,11 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.Http.Results;
 
 namespace HospitalProjectStJoeseph.Controllers
 {
@@ -132,6 +134,35 @@ namespace HospitalProjectStJoeseph.Controllers
             db.Patients.Remove(Patient);
             db.SaveChanges();
             return Ok();
+        }
+
+
+        /// <summary>
+        /// Retrieves the Patient Data for the specified Registered User. If it is the first time retrieving the data
+        /// the Patient is confirmed to be Registered
+        /// </summary>
+        /// <param name="id">String. User ID</param>
+        /// <returns>Patient Data</returns>
+        public IHttpActionResult GetPatientForUser(string id)
+        {
+            UserPatient up = db.UserPatients.Where(userPatient => userPatient.UserId == id).First();
+
+            if(up==null)
+            {
+                return NotFound();
+            }
+
+            Patient Patient = up.Patient;
+
+            if (!Patient.PatientIsRegistered)
+            {
+                db.Patients.Attach(Patient);
+                Patient.PatientIsRegistered = true;
+                db.SaveChanges();
+
+            }
+
+            return Ok(Patient);
         }
 
 

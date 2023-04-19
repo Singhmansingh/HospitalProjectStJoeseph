@@ -709,6 +709,14 @@
             RESPONSE: 
             </example>
         </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.PatientDataController.GetPatientForUser(System.String)">
+            <summary>
+            Retrieves the Patient Data for the specified Registered User. If it is the first time retrieving the data
+            the Patient is confirmed to be Registered
+            </summary>
+            <param name="id">String. User ID</param>
+            <returns>Patient Data</returns>
+        </member>
         <member name="M:HospitalProjectStJoeseph.Controllers.ServiceController.GetApplicationCookie">
             <summary>
             Grabs the authentication cookie sent to this controller.

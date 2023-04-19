@@ -231,6 +231,14 @@
     <Compile Include="Migrations\202303301820560_scorchedEarth.designer.cs">
       <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202304192223065_user_patients.cs" />
+    <Compile Include="Migrations\202304192223065_user_patients.designer.cs">
+      <DependentUpon>202304192223065_user_patients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202304192318241_patient_registered_check.cs" />
+    <Compile Include="Migrations\202304192318241_patient_registered_check.designer.cs">
+      <DependentUpon>202304192318241_patient_registered_check.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BestWish.cs" />
@@ -392,6 +400,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202303301820560_scorchedEarth.resx">
       <DependentUpon>202303301820560_scorchedEarth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304192223065_user_patients.resx">
+      <DependentUpon>202304192223065_user_patients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202304192318241_patient_registered_check.resx">
+      <DependentUpon>202304192318241_patient_registered_check.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,10 +1,12 @@
 ﻿using HospitalProjectStJoeseph.Models;
 using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -41,7 +43,7 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin,Doctor")]
         public ActionResult Add(Patient Patient)
         {
             GetApplicationCookie();
@@ -52,7 +54,7 @@ namespace HospitalProjectStJoeseph.Controllers
             return Redirect("/Patient/List");
         }
 
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult List()
         {
             GetApplicationCookie();//get token credentials
@@ -62,10 +64,19 @@ namespace HospitalProjectStJoeseph.Controllers
             return View(Patients);
         }
 
-        [Authorize]
+        [Authorize(Roles = "Patient,Admin")]
         public ActionResult Show(int id)
         {
             GetApplicationCookie();
+
+            if(User.IsInRole("Patient"))
+            {
+                string userId = User.Identity.GetUserId();
+                HttpResponseMessage res = client.GetAsync("PatientData/GetPatientForUser/" + userId).Result;
+                Patient _userPatient = res.Content.ReadAsAsync<Patient>().Result;
+                id = _userPatient.PatientId;
+            }
+            
             string url = "BestWishesData/ListBestWishesForPatient/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
             PatientDto Patient = response.Content.ReadAsAsync<PatientDto>().Result;

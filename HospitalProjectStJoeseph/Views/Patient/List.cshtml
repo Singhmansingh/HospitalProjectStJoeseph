@@ -11,7 +11,17 @@
 @foreach(var patient in Model)
             {
                 <div>
-                    <h3><a href="/Patient/Show/@patient.PatientId">@patient.PatientName</a></h3>
+
+                        <h3 style="display:inline-block;"><a href="/Patient/Show/@patient.PatientId">@patient.PatientName</a></h3>
+                        @if (patient.PatientIsRegistered)
+                        {
+                            <span class="text-success">Registered</span>
+                        }
+                        else
+                        {
+                            <span class="text-danger">Not Registered</span>
+                        }
+
                 </div>
             }
 
