@@ -58,14 +58,17 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
         // GET: Service/New
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
+            GetApplicationCookie();
+
             return View();
         }
 
         // POST: Service/Create
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Service service)
         {
             GetApplicationCookie();
@@ -86,7 +89,7 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
         // GET: Service/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             GetApplicationCookie();
@@ -98,7 +101,7 @@ namespace HospitalProjectStJoeseph.Controllers
 
         // POST: Service/Update/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Service service)
         {
             GetApplicationCookie();
@@ -131,7 +134,7 @@ namespace HospitalProjectStJoeseph.Controllers
 
         // POST: Service/Delete/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             GetApplicationCookie();

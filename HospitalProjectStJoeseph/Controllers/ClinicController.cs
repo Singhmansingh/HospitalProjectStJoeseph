@@ -64,8 +64,11 @@ namespace HospitalProjectStJoeseph.Controllers
 
         //POST: Clinic/Associate/{clinicid}
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Associate(int id, int ServiceId)
         {
+            GetApplicationCookie();
+
             string url = "clinicdata/associateclinicwithservice/" + id + "/" + ServiceId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
@@ -76,8 +79,11 @@ namespace HospitalProjectStJoeseph.Controllers
 
         //GET: Clinic/UnAssociate/{id}?ServiceId={ServiceId}
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public ActionResult UnAssociate(int id, int ServiceId)
         {
+            GetApplicationCookie();
+
             string url = "clinicdata/unassociateclinicwithservice/" + id + "/" + ServiceId;
             HttpContent content = new StringContent("");
             content.Headers.ContentType.MediaType = "application/json";
@@ -92,14 +98,16 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
         // GET: Clinic/New
+        [Authorize(Roles = "Admin")]
         public ActionResult New()
         {
+            GetApplicationCookie();
             return View();
         }
 
         // POST: Clinic/Create
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create(Clinic clinic)
         {
             GetApplicationCookie();
@@ -122,7 +130,7 @@ namespace HospitalProjectStJoeseph.Controllers
         }
 
         // GET: Clinic/Edit/5
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             GetApplicationCookie();
@@ -134,7 +142,7 @@ namespace HospitalProjectStJoeseph.Controllers
 
         // POST: Clinic/Update/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Update(int id, Clinic clinic)
         {
             GetApplicationCookie();
@@ -167,7 +175,7 @@ namespace HospitalProjectStJoeseph.Controllers
 
         // POST: Clinic/Delete/5
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             GetApplicationCookie();
