@@ -81,14 +81,12 @@ namespace HospitalProjectStJoeseph.Controllers
             1. Start the application, and login as "Admin" user
             2. Create a Patient at /Patient/New. when returned to list, you will see the new patient marked is "Not Registered"
             3. Register a new Account. This will be used for the Patient Login
-            4. Get the Patient ID from dbo.Patients
-            5. Get the "Patient" Role ID from dbo.AspNetRoles (or create it)
-            6. Get the User ID from dbo.AspNetUsers (for the created patient)
-            7. Enter the User ID and Role ID into dbo.AspNetUserRoles
-            8. Enter the User ID and Patient ID into dbo.UserPatients
-            9. Start the server and Login as the Patient
+            4. Log in again as Admin
+            5. Go to List Patient -> Select Patient -> "Assign User"
+            6. Chose the User's Email from the list, click Register User
+            7. Log in as the user account, and from the home page, select "go to Patient"
             
-            Logging in as Admin will now show the Patient is Registered
+            Logging in as Admin will now show the Patient is "Registered"
             */
             if(User.IsInRole("Patient"))
             {
