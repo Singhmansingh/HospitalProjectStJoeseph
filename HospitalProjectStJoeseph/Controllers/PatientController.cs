@@ -18,6 +18,8 @@ namespace HospitalProjectStJoeseph.Controllers
 {
     public class PatientController : Controller
     {
+    
+        
         // GET: Patient
         private static readonly HttpClient client;
         private JavaScriptSerializer jss = new JavaScriptSerializer();
@@ -74,6 +76,20 @@ namespace HospitalProjectStJoeseph.Controllers
         {
             GetApplicationCookie();
 
+            /*
+            How to enable Patient Authorization
+            1. Start the application, and login as "Admin" user
+            2. Create a Patient at /Patient/New. when returned to list, you will see the new patient marked is "Not Registered"
+            3. Register a new Account. This will be used for the Patient Login
+            4. Get the Patient ID from dbo.Patients
+            5. Get the "Patient" Role ID from dbo.AspNetRoles (or create it)
+            6. Get the User ID from dbo.AspNetUsers (for the created patient)
+            7. Enter the User ID and Role ID into dbo.AspNetUserRoles
+            8. Enter the User ID and Patient ID into dbo.UserPatients
+            9. Start the server and Login as the Patient
+            
+            Logging in as Admin will now show the Patient is Registered
+            */
             if(User.IsInRole("Patient"))
             {
                 string userId = User.Identity.GetUserId();
