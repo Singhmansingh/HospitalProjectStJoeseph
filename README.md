@@ -11,6 +11,19 @@ This project is a function CMS for a Hospital built using C# ASP.NET.
 - Shavin - Patient and Best Wishes
 
 ### Advanced Features
-- Shavin - Authorization
-- Danyal - Documentation
+#### Authorization
+- Shavin
+- Danyal
+
+#### Authentication
+- Shavin
+
+#### Documetnation
+- Danyal
+
+#### Merge Conflicts & git
+- Shavin
+- Kevin
+- Danyal
+
 
