@@ -1,4 +1,6 @@
 ﻿using HospitalProjectStJoeseph.Models;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
@@ -164,6 +166,8 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return Ok(Patient);
         }
+
+        
 
 
         private bool PatientExists(int id)

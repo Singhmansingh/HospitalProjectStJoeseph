@@ -1,4 +1,5 @@
 ﻿using HospitalProjectStJoeseph.Models;
+using HospitalProjectStJoeseph.Models.ViewModels;
 using Microsoft.Ajax.Utilities;
 using Microsoft.AspNet.Identity;
 using System;
@@ -7,9 +8,11 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using System.Web.UI.WebControls;
 
 namespace HospitalProjectStJoeseph.Controllers
 {
@@ -51,6 +54,8 @@ namespace HospitalProjectStJoeseph.Controllers
 
             HttpContent content = Prepare(jss.Serialize(Patient));
             HttpResponseMessage response = client.PostAsync(url, content).Result;
+
+
             return Redirect("/Patient/List");
         }
 
@@ -73,6 +78,7 @@ namespace HospitalProjectStJoeseph.Controllers
             {
                 string userId = User.Identity.GetUserId();
                 HttpResponseMessage res = client.GetAsync("PatientData/GetPatientForUser/" + userId).Result;
+                if (!res.IsSuccessStatusCode) return Redirect("/Patient/List");
                 Patient _userPatient = res.Content.ReadAsAsync<Patient>().Result;
                 id = _userPatient.PatientId;
             }
@@ -100,8 +106,11 @@ namespace HospitalProjectStJoeseph.Controllers
 
             if (response.IsSuccessStatusCode)
             {
+
                 return View(Patient);
             }
+
+
 
             return Redirect("/Patient/Show/"+id);
         }
@@ -139,6 +148,42 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return View(PatientDto);
         }
+
+
+        // Assign a User Account to a Patient
+        [Authorize(Roles ="Admin")]
+        public ActionResult Assign(int id)
+        {
+            var url = "UserData/ListUsers";
+
+            var response = client.PostAsync(url, null).Result;
+            IEnumerable<UserDto> Users = response.Content.ReadAsAsync<IEnumerable<UserDto>>().Result;
+
+            url = "PatientData/Find/" + id;
+            response = client.GetAsync(url).Result;
+            Patient Patient = response.Content.ReadAsAsync<Patient>().Result;
+
+            if (response.IsSuccessStatusCode)
+            {
+                ViewBag.Users = Users;
+                ViewBag.Patient = Patient;
+
+                return View();
+            }
+
+            return Redirect("/Patient/List");
+        }
+
+
+        // REgisters a user to a patient
+        public ActionResult Register(int id, string UserId)
+        {
+            var url = "UserData/AssignPatientToUser/"+id+"/"+UserId;
+            var response = client.GetAsync(url).Result;
+
+            return Redirect("/Patient/Show/" + id);
+        }
+
 
         private HttpContent Prepare(string payload)
         {

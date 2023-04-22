@@ -19,7 +19,19 @@
     </div>
     <div class="col-md-4">
         <h2>Patients</h2>
-        <p><a class="btn btn-primary" href="/Patient/List">List Patients &raquo;</a></p>
+        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+        {
+            <p><a class="btn btn-primary" href="/Patient/List">List Patients &raquo;</a></p>
+
+        }
+        else if (User.IsInRole("Patient"))
+        {
+            <p><a class="btn btn-primary" href="/Patient/Show/0">Go to Patient &raquo;</a></p>
+        }
+        else
+        {
+            <p><a class="btn btn-primary" href="/Patient/List">Patients &raquo;</a></p>
+        }
     </div>
 </div>
 <div class="row">

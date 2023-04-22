@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Assign";
+    HospitalProjectStJoeseph.Models.Patient Patient = ViewBag.Patient;
+    IEnumerable<HospitalProjectStJoeseph.Models.ViewModels.UserDto> Users = ViewBag.Users;
+}
+
+
+<h2>Assign a User to Patient: @Patient.PatientName (@Patient.PatientEmailAddress)</h2>
+
+<form action="/Patient/Register/@Patient.PatientId" method="post">
+    <div class="form-group">
+        <label>User</label>
+        <select name="UserId" class="form-control">
+            @foreach (var User in Users)
+            {
+                <option value="@User.UserId">@User.UserEmail</option>
+            }
+        </select>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Register User" />
+
+</form>

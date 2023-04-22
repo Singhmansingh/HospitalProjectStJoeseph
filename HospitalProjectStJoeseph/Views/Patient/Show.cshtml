@@ -2,11 +2,26 @@
 @{
     ViewBag.Title = "Show";
 }
-
-<h2>@Model.Patient.PatientName</h2>
+<div>
+    <h2 style="display:inline-block;">@Model.Patient.PatientName</h2>
+    @if (@Model.Patient.PatientIsRegistered)
+    {
+        <span class="text-success">Registered</span>
+    }
+    else
+    {
+        <span class="text-danger">Not Registered</span>
+    }
+</div>
 <div class="">
     <a href="/Patient/Update/@Model.Patient.PatientId" class="btn btn-primary btn-sm">Edit</a>
     <button class="btn btn-danger btn-sm" onclick="confirmDeletion()">Delete</button>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+    {
+        <a href="/Patient/Assign/@Model.Patient.PatientId" class="btn btn-success btn-sm">Assign User</a>
+
+    }
+
 </div>
 <div id="DeleteConfirmBox" class="hide"></div>
 <div>
