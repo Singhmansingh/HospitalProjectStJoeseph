@@ -1,7 +1,69 @@
-﻿
+﻿@model HospitalProjectStJoeseph.Models.Appointment
+
 @{
-    ViewBag.Title = "Update";
+    ViewBag.Title = "Update Appointment";
 }
 
-<h2>Update</h2>
+<h2>@ViewBag.Title</h2>
 
+@using (Html.BeginForm("Update", "Appointments", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Appointment</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        @Html.HiddenFor(model => model.appointmentId)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.patientId, "Patient", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.patientId, new SelectList(ViewBag.PatientList, "patientId", "patient_name"), "Select Patient", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.patientId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.physicianId, "Physician", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.physicianId, new SelectList(ViewBag.PhysicianList, "physicianId", "physician_name"), "Select Physician", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.physicianId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.appointment_start, "Start Time", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.appointment_start, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.appointment_start, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.appointment_end, "End Time", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.appointment_end, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.appointment_end, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.servicesId, "Service", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.servicesId, new SelectList(ViewBag.ServiceList, "servicesId", "service_name"), "Select Service", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.servicesId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @

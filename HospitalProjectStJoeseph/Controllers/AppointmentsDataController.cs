@@ -108,6 +108,19 @@ namespace HospitalProjectStJoeseph.Controllers
 
             return Ok(appointment);
         }
+        [Route("api/AppointmentsData/ListAppointmentsForPhysicians/{id}")]
+        [HttpGet]
+        public IEnumerable<Appointment> ListAppointmentsForPhysicians(int id)
+        {
+            return db.Appointments.Where(a => a.physicianId == id).ToList();
+        }
+        [Route("api/AppointmentsData/ListAppointmentsForPatients/{id}")]
+        [HttpGet]
+        public IEnumerable<Appointment> ListAppointmentsForPatients(int id)
+        {
+            return db.Appointments.Where(a => a.patientId == id).ToList();
+        }
+
 
         protected override void Dispose(bool disposing)
         {

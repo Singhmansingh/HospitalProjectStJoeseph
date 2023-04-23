@@ -795,5 +795,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:HospitalProjectStJoeseph.Controllers.UserDataController.AssignPatientToUser(System.Int32,System.String)">
+            <summary>
+            Assigns a User Account to a Patient
+            </summary>
+            <param name="PatientId">Integer. Patient ID</param>
+            <param name="_UserId">String. Application User ID</param>
+            <returns>Status code (200 OK)</returns>
+        </member>
     </members>
 </doc>

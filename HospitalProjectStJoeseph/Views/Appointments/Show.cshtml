@@ -1,0 +1,12 @@
+﻿@model HospitalProjectStJoeseph.Models.Appointment
+
+<h2>@Model.appointmentId</h2>
+
+<p>Patient Name: @Model.Patient.PatientName</p>
+<p>Physician Name: @Model.Physician.first_name @Model.Physician.last_name</p>
+<p>Service Name: @Model.Service.ServiceName</p>
+<p>Appointment Start: @Model.appointment_start</p>
+<p>Appointment End: @Model.appointment_end</p>
+
+@Html.ActionLink("Edit", "Update", new { id = Model.appointmentId })
+@Html.ActionLink("Delete", "DeleteConfirm", new { id = Model.appointmentId })

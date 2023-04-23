@@ -1,7 +1,35 @@
-﻿
-@{
-    ViewBag.Title = "List";
-}
+﻿@model IEnumerable<HospitalProjectStJoeseph.Models.Appointment>
 
-<h2>List</h2>
+<h2>Appointment List</h2>
 
+<p>
+    <a href="/Appointments/New" class="btn btn-primary">New Appointment</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Patient</th>
+            <th>Physician</th>
+            <th>Service</th>
+            <th>Date and Time</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var appointment in Model)
+        {
+            <tr>
+                <td>@appointment.Patient.PatientName</td>
+                <td>@appointment.Physician.first_name @appointment.Physician.last_name</td>
+                <td>@appointment.Service.ServiceName</td>
+                <td>@appointment.appointment_start.ToString("f") - @appointment.appointment_end.ToString("t")</td>
+                <td>
+                    <a href="/Appointments/Show/@appointment.appointmentId" class="btn btn-default">Details</a>
+                    <a href="/Appointments/Update/@appointment.appointmentId" class="btn btn-primary">Edit</a>
+                    <a href="/Appointments/DeleteConfirm/@appointment.appointmentId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

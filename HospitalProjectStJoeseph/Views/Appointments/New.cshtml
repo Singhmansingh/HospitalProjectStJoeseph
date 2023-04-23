@@ -1,7 +1,53 @@
-﻿
-@{
-    ViewBag.Title = "New";
+﻿@model HospitalProjectStJoeseph.Models.Appointment
+
+<h2>Add New Appointment</h2>
+
+@using (Html.BeginForm("Add", "Appointments", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.patientId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.patientId, ViewBag.Patients as SelectList, "Select Patient", htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.patientId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.physicianId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.physicianId, ViewBag.Physicians as SelectList, "Select Physician", htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.physicianId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.appointment_start, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.appointment_start, new { @class = "form-control datetimepicker", type = "datetime" })
+        @Html.ValidationMessageFor(model => model.appointment_start, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.appointment_end, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.appointment_end, new { @class = "form-control datetimepicker", type = "datetime" })
+        @Html.ValidationMessageFor(model => model.appointment_end, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.servicesId, htmlAttributes: new { @class = "control-label" })
+        @Html.DropDownListFor(model => model.servicesId, ViewBag.Services as SelectList, "Select Service", htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.servicesId, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
 }
 
-<h2>New</h2>
-
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        $(function () {
+            $('.datetimepicker').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+            });
+        });
+    </script>
+}

@@ -382,6 +382,7 @@
     <Content Include="Views\Physicians\DeleteConfirm.cshtml" />
     <Content Include="Views\Physicians\Show.cshtml" />
     <Content Include="Views\Patient\Assign.cshtml" />
+    <Content Include="Views\Appointments\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

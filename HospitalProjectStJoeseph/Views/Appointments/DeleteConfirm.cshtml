@@ -1,0 +1,30 @@
+﻿@model HospitalProjectStJoeseph.Models.Appointment
+
+<h2>Confirm Deletion of Appointment</h2>
+
+<p>Are you sure you want to delete this appointment?</p>
+
+<table class="table">
+    <tr>
+        <th>Patient</th>
+        <td>@Model.Patient.PatientName</td>
+    </tr>
+    <tr>
+        <th>Physician</th>
+        <td>@Model.Physician.first_name @Model.Physician.last_name</td>
+    </tr>
+    <tr>
+        <th>Service</th>
+        <td>@Model.Service.ServiceName</td>
+    </tr>
+    <tr>
+        <th>Date and Time</th>
+        <td>@Model.appointment_start.ToString("f") - @Model.appointment_end.ToString("t")</td>
+    </tr>
+</table>
+
+@using (Html.BeginForm("Delete", "Appointments", new { id = Model.appointmentId }, FormMethod.Post))
+{
+    <input type="submit" class="btn btn-danger" value="Delete" />
+    <a href="/Appointments/List" class="btn btn-default">Cancel</a>
+}
